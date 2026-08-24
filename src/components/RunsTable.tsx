@@ -4,9 +4,10 @@ import { METRICS, formatDateTime, formatMetricValue, rateValue } from '../lib/me
 type RunsTableProps = {
   runs: MetricRun[]
   pages: PageTarget[]
+  rangeLabel: string
 }
 
-export function RunsTable({ runs, pages }: RunsTableProps) {
+export function RunsTable({ runs, pages, rangeLabel }: RunsTableProps) {
   const labels = Object.fromEntries(pages.map((page) => [page.id, page.label]))
   const rows = [...runs].sort((a, b) => b.measuredAt.localeCompare(a.measuredAt))
 
@@ -14,7 +15,7 @@ export function RunsTable({ runs, pages }: RunsTableProps) {
     <section className="table-wrap">
       <div className="table-head">
         <h2>Jednotlivé běhy</h2>
-        <p>Posledních 7 dní, nejnovější nahoře. Chybějící nebo neúspěšné audity zůstanou v tabulce, graf je přeskočí.</p>
+        <p>{rangeLabel}, nejnovější nahoře. Chybějící nebo neúspěšné audity zůstanou v tabulce, graf je přeskočí.</p>
       </div>
       <div className="table-scroll">
         <table>

@@ -8,7 +8,16 @@ import { RunsTable } from './components/RunsTable'
 import { PAGES } from './config/site'
 import { loadCruxFile, loadMetricsFile } from './lib/data'
 import { formatDateTime, formatRelative, getMetric } from './lib/metrics'
-import { failedRuns, filterRuns, lastDaysWindow, latestGeneratedAt, runsInWindow } from './lib/series'
+import {
+  failedRuns,
+  filterRuns,
+  fitTimeWindow,
+  formatRangeLabel,
+  lastDaysWindow,
+  latestGeneratedAt,
+  runsInWindow,
+  type RangeDays,
+} from './lib/series'
 import type { CruxFile, MetricId, MetricsFile, PageId, Profile } from './lib/types'
 
 function App() {
@@ -20,6 +29,7 @@ function App() {
   const [profile, setProfile] = useState<Profile>('mobile')
   const [pageId, setPageId] = useState<PageId | 'all'>('all')
   const [metricId, setMetricId] = useState<MetricId>('lcp')
+  const [rangeDays, setRangeDays] = useState<RangeDays>(7)
 
   async function refresh() {
     setLoading(true)
@@ -44,18 +54,20 @@ function App() {
   }, [])
 
   const pages = data?.pages?.length ? data.pages : PAGES
-  const windowRange = lastDaysWindow()
-  const weekRuns = useMemo(
-    () => runsInWindow(data?.runs ?? [], windowRange.from, windowRange.to),
-    [data, windowRange.from, windowRange.to],
+  const requestedRange = lastDaysWindow(rangeDays)
+  const rangeRuns = useMemo(
+    () => runsInWindow(data?.runs ?? [], requestedRange.from, requestedRange.to),
+    [data, requestedRange.from, requestedRange.to],
   )
   const visibleRuns = useMemo(
-    () => filterRuns(weekRuns, pageId, profile),
-    [pageId, profile, weekRuns],
+    () => filterRuns(rangeRuns, pageId, profile),
+    [pageId, profile, rangeRuns],
   )
+  const chartWindow = fitTimeWindow(visibleRuns, requestedRange.from, requestedRange.to)
   const lastUpdate = latestGeneratedAt(data?.runs ?? []) ?? data?.generatedAt
   const failures = failedRuns(visibleRuns)
   const metric = getMetric(metricId)
+  const rangeLabel = formatRangeLabel(rangeDays)
 
   return (
     <div className="studio">
@@ -95,7 +107,7 @@ function App() {
           </div>
         </dl>
         {error && <p className="banner error">{error}</p>}
-        {!error && !loading && weekRuns.length === 0 && (
+        {!error && !loading && (data?.runs.length ?? 0) === 0 && (
           <p className="banner">
             Zatím tu nejsou Lighthouse běhy. Spusťte workflow Lighthouse monitor, nebo `npm run measure`.
           </p>
@@ -104,7 +116,7 @@ function App() {
 
       <PagePans
         pages={pages}
-        runs={weekRuns}
+        runs={data?.runs ?? []}
         profile={profile}
         selectedPageId={pageId}
         onSelect={setPageId}
@@ -115,21 +127,29 @@ function App() {
         <Filters
           profile={profile}
           metricId={metricId}
+          rangeDays={rangeDays}
           onProfile={setProfile}
           onMetric={setMetricId}
+          onRangeDays={setRangeDays}
         />
         <p className="board-note">
-          {pageId === 'all' ? 'Všechny čtyři stránky' : pages.find((page) => page.id === pageId)?.label} · {profile === 'mobile' ? 'mobil' : 'desktop'} · {metric.label}
+          {pageId === 'all' ? 'Všechny čtyři stránky' : pages.find((page) => page.id === pageId)?.label} · {profile === 'mobile' ? 'mobil' : 'desktop'} · {metric.label} · {rangeLabel.toLowerCase()}
+          {chartWindow.fitted ? ' · osa je oříznutá na dostupná měření' : ''}
         </p>
         <MetricChart
           runs={visibleRuns}
           metricId={metricId}
-          from={windowRange.from}
-          to={windowRange.to}
+          from={chartWindow.from}
+          to={chartWindow.to}
+          rangeLabel={
+            chartWindow.fitted
+              ? `${rangeLabel}, zobrazený úsek podle dat`
+              : rangeLabel
+          }
         />
       </section>
 
-      <RunsTable runs={visibleRuns} pages={pages} />
+      <RunsTable runs={visibleRuns} pages={pages} rangeLabel={rangeLabel} />
 
       <FieldReport data={crux} pages={pages} pageId={pageId} profile={profile} />
 

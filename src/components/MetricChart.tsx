@@ -6,13 +6,14 @@ import {
   getMetric,
   rateValue,
 } from '../lib/metrics'
-import { metricSeries } from '../lib/series'
+import { metricSeries, timeAxisTicks } from '../lib/series'
 
 type MetricChartProps = {
   runs: MetricRun[]
   metricId: MetricId
   from: number
   to: number
+  rangeLabel: string
 }
 
 const WIDTH = 960
@@ -24,14 +25,18 @@ function scale(value: number, inMin: number, inMax: number, outMin: number, outM
   return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin)
 }
 
-export function MetricChart({ runs, metricId, from, to }: MetricChartProps) {
+export function MetricChart({ runs, metricId, from, to, rangeLabel }: MetricChartProps) {
   const metric = getMetric(metricId)
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
   const points = useMemo(
     () => metricSeries(runs, metricId).filter((point) => point.time >= from && point.time <= to),
     [from, metricId, runs, to],
   )
-  const errors = runs.filter((run) => run.status === 'error')
+  const errors = runs.filter((run) => {
+    if (run.status !== 'error') return false
+    const time = Date.parse(run.measuredAt)
+    return Number.isFinite(time) && time >= from && time <= to
+  })
 
   const maxValue = Math.max(
     metric.higherIsBetter ? 100 : metric.poor * 1.25,
@@ -58,16 +63,15 @@ export function MetricChart({ runs, metricId, from, to }: MetricChartProps) {
     return { value, pos: y(value) }
   })
 
-  const dayMs = 24 * 60 * 60 * 1000
-  const xTicks: number[] = []
-  const startDay = Math.ceil(from / dayMs) * dayMs
-  for (let time = startDay; time <= to; time += dayMs) xTicks.push(time)
+  const xTicks = timeAxisTicks(from, to)
 
   return (
     <figure className="chart">
       <figcaption>
         <strong>{metric.label}</strong>
-        <span>{metric.description}</span>
+        <span>
+          {metric.description} {rangeLabel}.
+        </span>
       </figcaption>
       {points.length === 0 ? (
         <div className="chart-empty">
@@ -77,7 +81,7 @@ export function MetricChart({ runs, metricId, from, to }: MetricChartProps) {
         <svg
           viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
           role="img"
-          aria-label={`${metric.label} za 7 dní`}
+          aria-label={`${metric.label} · ${rangeLabel}`}
           onMouseLeave={() => setHoverIndex(null)}
         >
           <rect className="chart-paper" x="0" y="0" width={WIDTH} height={HEIGHT} />
@@ -109,9 +113,9 @@ export function MetricChart({ runs, metricId, from, to }: MetricChartProps) {
               {formatMetricValue(metricId, tick.value)}
             </text>
           ))}
-          {xTicks.map((time) => (
-            <text key={time} className="chart-tick" x={x(time)} y={HEIGHT - 14} textAnchor="middle">
-              {new Date(time).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'numeric' })}
+          {xTicks.map((tick) => (
+            <text key={tick.time} className="chart-tick" x={x(tick.time)} y={HEIGHT - 14} textAnchor="middle">
+              {tick.label}
             </text>
           ))}
           {path && <path className="chart-line" d={path} />}

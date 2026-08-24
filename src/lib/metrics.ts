@@ -212,4 +212,3 @@ export function emptyMetrics(): MetricValues {
 }
 
 export const DAY_MS = 24 * 60 * 60 * 1000
-export const HISTORY_DAYS = 7

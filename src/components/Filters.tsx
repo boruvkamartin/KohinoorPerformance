@@ -1,16 +1,48 @@
 import type { MetricId, Profile } from '../lib/types'
 import { METRICS } from '../lib/metrics'
+import { RANGE_DAYS, type RangeDays } from '../lib/series'
 
 type FiltersProps = {
   profile: Profile
   metricId: MetricId
+  rangeDays: RangeDays
   onProfile: (profile: Profile) => void
   onMetric: (metricId: MetricId) => void
+  onRangeDays: (days: RangeDays) => void
 }
 
-export function Filters({ profile, metricId, onProfile, onMetric }: FiltersProps) {
+function rangeButtonLabel(days: RangeDays) {
+  if (days === 1) return '1 den'
+  if (days < 5) return `${days} dny`
+  return `${days} dní`
+}
+
+export function Filters({
+  profile,
+  metricId,
+  rangeDays,
+  onProfile,
+  onMetric,
+  onRangeDays,
+}: FiltersProps) {
   return (
     <div className="filters">
+      <fieldset>
+        <legend>Období</legend>
+        <div className="segment">
+          {RANGE_DAYS.map((days) => (
+            <button
+              key={days}
+              type="button"
+              className={rangeDays === days ? 'is-active' : ''}
+              aria-pressed={rangeDays === days}
+              onClick={() => onRangeDays(days)}
+            >
+              {rangeButtonLabel(days)}
+            </button>
+          ))}
+        </div>
+      </fieldset>
       <fieldset>
         <legend>Profil</legend>
         <div className="segment">
