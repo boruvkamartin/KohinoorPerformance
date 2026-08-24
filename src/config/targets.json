@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "id": "homepage",
+      "label": "Homepage",
+      "url": "https://eshop.koh-i-noor.cz/"
+    },
+    {
+      "id": "category",
+      "label": "Škola/školka",
+      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby"
+    },
+    {
+      "id": "product",
+      "label": "Produkt",
+      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977"
+    },
+    {
+      "id": "basket",
+      "label": "Košík",
+      "url": "https://eshop.koh-i-noor.cz/cs/Basket"
+    }
+  ],
+  "profiles": ["mobile", "desktop"]
+}

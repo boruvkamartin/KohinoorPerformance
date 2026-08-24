@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-24T13:53:27.843Z",
+  "pages": [
+    {
+      "id": "homepage",
+      "label": "Homepage",
+      "url": "https://eshop.koh-i-noor.cz/"
+    },
+    {
+      "id": "category",
+      "label": "Škola/školka",
+      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby"
+    },
+    {
+      "id": "product",
+      "label": "Produkt",
+      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977"
+    },
+    {
+      "id": "basket",
+      "label": "Košík",
+      "url": "https://eshop.koh-i-noor.cz/cs/Basket"
+    }
+  ],
+  "runs": [
+    {
+      "id": "2026-08-24T13:52:49.986Z|homepage|mobile",
+      "measuredAt": "2026-08-24T13:52:49.986Z",
+      "pageId": "homepage",
+      "profile": "mobile",
+      "url": "https://eshop.koh-i-noor.cz/",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 36,
+        "fcp": 5549.6709599999995,
+        "lcp": 9154.689355,
+        "si": 6482.318441237838,
+        "tbt": 644.4999999999964,
+        "cls": 0.17236752637469335,
+        "ttfb": 641.7900000000001
+      }
+    },
+    {
+      "id": "2026-08-24T13:53:09.910Z|homepage|desktop",
+      "measuredAt": "2026-08-24T13:53:09.910Z",
+      "pageId": "homepage",
+      "profile": "desktop",
+      "url": "https://eshop.koh-i-noor.cz/",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 90,
+        "fcp": 933.0742000000001,
+        "lcp": 1465.8994249999998,
+        "si": 1477.0989223319418,
+        "tbt": 6,
+        "cls": 0.10016692896243728,
+        "ttfb": 558.162
+      }
+    }
+  ]
+}

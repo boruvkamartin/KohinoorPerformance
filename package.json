@@ -1,0 +1,30 @@
+{
+  "name": "kohinoorperformance",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "test": "node --test scripts/parse-lighthouse.test.mjs",
+    "measure": "node scripts/run-lighthouse.mjs",
+    "measure:smoke": "node scripts/run-lighthouse.mjs --pages=homepage --profiles=mobile,desktop"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "chrome-launcher": "^1.2.1",
+    "lighthouse": "^12.8.2",
+    "oxlint": "^1.79.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.2"
+  }
+}
