@@ -1,7 +1,1130 @@
 {
   "version": 1,
-  "generatedAt": null,
+  "generatedAt": "2026-08-24T15:05:01.097Z",
   "origin": "https://eshop.koh-i-noor.cz",
-  "records": [],
-  "history": []
+  "records": [
+    {
+      "pageId": "origin",
+      "url": "https://eshop.koh-i-noor.cz",
+      "scope": "origin",
+      "formFactor": "PHONE",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-26",
+        "lastDate": "2026-08-22"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 1329,
+          "good": 0.9362,
+          "ni": 0.0442,
+          "poor": 0.0197
+        },
+        "inp": {
+          "p75": 205,
+          "good": 0.7394,
+          "ni": 0.2327,
+          "poor": 0.0279
+        },
+        "cls": {
+          "p75": 0,
+          "good": 0.9407,
+          "ni": 0.031,
+          "poor": 0.0283
+        },
+        "fcp": {
+          "p75": 977,
+          "good": 0.9343,
+          "ni": 0.0445,
+          "poor": 0.0212
+        },
+        "ttfb": {
+          "p75": 720,
+          "good": 0.8137,
+          "ni": 0.1637,
+          "poor": 0.0226
+        }
+      }
+    },
+    {
+      "pageId": "origin",
+      "url": "https://eshop.koh-i-noor.cz",
+      "scope": "origin",
+      "formFactor": "DESKTOP",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-26",
+        "lastDate": "2026-08-22"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 1181,
+          "good": 0.9441,
+          "ni": 0.0319,
+          "poor": 0.0239
+        },
+        "inp": {
+          "p75": 76,
+          "good": 0.9579,
+          "ni": 0.0357,
+          "poor": 0.0064
+        },
+        "cls": {
+          "p75": 0.09,
+          "good": 0.7801,
+          "ni": 0.1625,
+          "poor": 0.0573
+        },
+        "fcp": {
+          "p75": 845,
+          "good": 0.9645,
+          "ni": 0.0255,
+          "poor": 0.0101
+        },
+        "ttfb": {
+          "p75": 617,
+          "good": 0.8935,
+          "ni": 0.0917,
+          "poor": 0.0149
+        }
+      }
+    },
+    {
+      "pageId": "origin",
+      "url": "https://eshop.koh-i-noor.cz",
+      "scope": "origin",
+      "formFactor": "ALL",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-26",
+        "lastDate": "2026-08-22"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 1305,
+          "good": 0.9372,
+          "ni": 0.0422,
+          "poor": 0.0206
+        },
+        "inp": {
+          "p75": 176,
+          "good": 0.7856,
+          "ni": 0.1902,
+          "poor": 0.0242
+        },
+        "cls": {
+          "p75": 0.01,
+          "good": 0.9099,
+          "ni": 0.0563,
+          "poor": 0.0338
+        },
+        "fcp": {
+          "p75": 955,
+          "good": 0.94,
+          "ni": 0.0415,
+          "poor": 0.0185
+        },
+        "ttfb": {
+          "p75": 701,
+          "good": 0.8289,
+          "ni": 0.15,
+          "poor": 0.0211
+        }
+      }
+    },
+    {
+      "pageId": "homepage",
+      "url": "https://eshop.koh-i-noor.cz/",
+      "scope": "url",
+      "formFactor": "PHONE",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-26",
+        "lastDate": "2026-08-22"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 1726,
+          "good": 0.8795,
+          "ni": 0.0797,
+          "poor": 0.0409
+        },
+        "inp": {
+          "p75": 281,
+          "good": 0.5827,
+          "ni": 0.3682,
+          "poor": 0.0491
+        },
+        "cls": {
+          "p75": 0.01,
+          "good": 0.8045,
+          "ni": 0.192,
+          "poor": 0.0035
+        },
+        "fcp": {
+          "p75": 1465,
+          "good": 0.8367,
+          "ni": 0.1072,
+          "poor": 0.0561
+        },
+        "ttfb": {
+          "p75": 978,
+          "good": 0.5855,
+          "ni": 0.3475,
+          "poor": 0.0671
+        }
+      }
+    },
+    {
+      "pageId": "homepage",
+      "url": "https://eshop.koh-i-noor.cz/",
+      "scope": "url",
+      "formFactor": "DESKTOP",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-26",
+        "lastDate": "2026-08-22"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 1330,
+          "good": 0.9322,
+          "ni": 0.0435,
+          "poor": 0.0244
+        },
+        "inp": {
+          "p75": 108,
+          "good": 0.9248,
+          "ni": 0.0691,
+          "poor": 0.006
+        },
+        "cls": {
+          "p75": 0.1,
+          "good": 0.7423,
+          "ni": 0.2532,
+          "poor": 0.0045
+        },
+        "fcp": {
+          "p75": 1181,
+          "good": 0.8974,
+          "ni": 0.0678,
+          "poor": 0.0348
+        },
+        "ttfb": {
+          "p75": 749,
+          "good": 0.7862,
+          "ni": 0.1591,
+          "poor": 0.0547
+        }
+      }
+    },
+    {
+      "pageId": "category",
+      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
+      "scope": "url",
+      "formFactor": "PHONE",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-26",
+        "lastDate": "2026-08-22"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 1781,
+          "good": 0.8915,
+          "ni": 0.0801,
+          "poor": 0.0284
+        },
+        "inp": {
+          "p75": 180,
+          "good": 0.7944,
+          "ni": 0.1888,
+          "poor": 0.0168
+        },
+        "cls": {
+          "p75": 0,
+          "good": 0.9832,
+          "ni": 0.0041,
+          "poor": 0.0127
+        },
+        "fcp": {
+          "p75": 1357,
+          "good": 0.8912,
+          "ni": 0.0845,
+          "poor": 0.0243
+        },
+        "ttfb": {
+          "p75": 1072,
+          "good": 0.4009,
+          "ni": 0.5634,
+          "poor": 0.0358
+        }
+      }
+    },
+    {
+      "pageId": "category",
+      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
+      "scope": "url",
+      "formFactor": "DESKTOP",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-26",
+        "lastDate": "2026-08-22"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 1407,
+          "good": 0.9579,
+          "ni": 0.0189,
+          "poor": 0.0232
+        },
+        "inp": {
+          "p75": 78,
+          "good": 0.9594,
+          "ni": 0.0262,
+          "poor": 0.0145
+        },
+        "cls": {
+          "p75": 0.02,
+          "good": 0.8604,
+          "ni": 0.0504,
+          "poor": 0.0892
+        },
+        "fcp": {
+          "p75": 1150,
+          "good": 0.9406,
+          "ni": 0.0485,
+          "poor": 0.0109
+        },
+        "ttfb": {
+          "p75": 944,
+          "good": 0.4924,
+          "ni": 0.48,
+          "poor": 0.0276
+        }
+      }
+    },
+    {
+      "pageId": "product",
+      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
+      "scope": "url",
+      "formFactor": "PHONE",
+      "status": "insufficient-data",
+      "error": "chrome ux report data not found",
+      "collectionPeriod": null,
+      "metrics": null
+    },
+    {
+      "pageId": "product",
+      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
+      "scope": "url",
+      "formFactor": "DESKTOP",
+      "status": "insufficient-data",
+      "error": "chrome ux report data not found",
+      "collectionPeriod": null,
+      "metrics": null
+    },
+    {
+      "pageId": "basket",
+      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
+      "scope": "url",
+      "formFactor": "PHONE",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-26",
+        "lastDate": "2026-08-22"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 874,
+          "good": 0.9844,
+          "ni": 0.0124,
+          "poor": 0.0032
+        },
+        "inp": {
+          "p75": 119,
+          "good": 0.9258,
+          "ni": 0.07,
+          "poor": 0.0043
+        },
+        "cls": {
+          "p75": 0,
+          "good": 0.9954,
+          "ni": 0.0027,
+          "poor": 0.0019
+        },
+        "fcp": {
+          "p75": 709,
+          "good": 0.982,
+          "ni": 0.0093,
+          "poor": 0.0087
+        },
+        "ttfb": {
+          "p75": 440,
+          "good": 0.9596,
+          "ni": 0.0362,
+          "poor": 0.0042
+        }
+      }
+    },
+    {
+      "pageId": "basket",
+      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
+      "scope": "url",
+      "formFactor": "DESKTOP",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-26",
+        "lastDate": "2026-08-22"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 733,
+          "good": 0.9827,
+          "ni": 0.0045,
+          "poor": 0.0128
+        },
+        "inp": {
+          "p75": 47,
+          "good": 0.9846,
+          "ni": 0.0085,
+          "poor": 0.007
+        },
+        "cls": {
+          "p75": 0,
+          "good": 0.9956,
+          "ni": 0,
+          "poor": 0.0044
+        },
+        "fcp": {
+          "p75": 620,
+          "good": 0.9837,
+          "ni": 0.0088,
+          "poor": 0.0075
+        },
+        "ttfb": {
+          "p75": 380,
+          "good": 0.9786,
+          "ni": 0.0214,
+          "poor": 0
+        }
+      }
+    }
+  ],
+  "history": [
+    {
+      "pageId": "origin",
+      "url": "https://eshop.koh-i-noor.cz",
+      "scope": "origin",
+      "formFactor": "PHONE",
+      "status": "ok",
+      "error": null,
+      "points": [
+        {
+          "endDate": "2026-03-07",
+          "firstDate": "2026-02-08",
+          "lcp": 1588,
+          "inp": 118,
+          "cls": 0,
+          "fcp": 1265,
+          "ttfb": 1012
+        },
+        {
+          "endDate": "2026-03-14",
+          "firstDate": "2026-02-15",
+          "lcp": 1609,
+          "inp": 131,
+          "cls": 0,
+          "fcp": 1265,
+          "ttfb": 989
+        },
+        {
+          "endDate": "2026-03-21",
+          "firstDate": "2026-02-22",
+          "lcp": 1628,
+          "inp": 145,
+          "cls": 0,
+          "fcp": 1271,
+          "ttfb": 987
+        },
+        {
+          "endDate": "2026-03-28",
+          "firstDate": "2026-03-01",
+          "lcp": 1661,
+          "inp": 158,
+          "cls": 0,
+          "fcp": 1296,
+          "ttfb": 1014
+        },
+        {
+          "endDate": "2026-04-04",
+          "firstDate": "2026-03-08",
+          "lcp": 1662,
+          "inp": 162,
+          "cls": 0,
+          "fcp": 1292,
+          "ttfb": 1006
+        },
+        {
+          "endDate": "2026-04-11",
+          "firstDate": "2026-03-15",
+          "lcp": 1680,
+          "inp": 160,
+          "cls": 0,
+          "fcp": 1301,
+          "ttfb": 1016
+        },
+        {
+          "endDate": "2026-04-18",
+          "firstDate": "2026-03-22",
+          "lcp": 1721,
+          "inp": 164,
+          "cls": 0,
+          "fcp": 1348,
+          "ttfb": 1063
+        },
+        {
+          "endDate": "2026-04-25",
+          "firstDate": "2026-03-29",
+          "lcp": 1779,
+          "inp": 162,
+          "cls": 0,
+          "fcp": 1401,
+          "ttfb": 1120
+        },
+        {
+          "endDate": "2026-05-02",
+          "firstDate": "2026-04-05",
+          "lcp": 1833,
+          "inp": 162,
+          "cls": 0,
+          "fcp": 1441,
+          "ttfb": 1146
+        },
+        {
+          "endDate": "2026-05-09",
+          "firstDate": "2026-04-12",
+          "lcp": 1853,
+          "inp": 165,
+          "cls": 0,
+          "fcp": 1455,
+          "ttfb": 1140
+        },
+        {
+          "endDate": "2026-05-16",
+          "firstDate": "2026-04-19",
+          "lcp": 1811,
+          "inp": 163,
+          "cls": 0,
+          "fcp": 1414,
+          "ttfb": 1105
+        },
+        {
+          "endDate": "2026-05-23",
+          "firstDate": "2026-04-26",
+          "lcp": 1780,
+          "inp": 166,
+          "cls": 0,
+          "fcp": 1390,
+          "ttfb": 1076
+        },
+        {
+          "endDate": "2026-05-30",
+          "firstDate": "2026-05-03",
+          "lcp": 1814,
+          "inp": 171,
+          "cls": 0,
+          "fcp": 1428,
+          "ttfb": 1106
+        },
+        {
+          "endDate": "2026-06-06",
+          "firstDate": "2026-05-10",
+          "lcp": 1866,
+          "inp": 172,
+          "cls": 0,
+          "fcp": 1480,
+          "ttfb": 1181
+        },
+        {
+          "endDate": "2026-06-13",
+          "firstDate": "2026-05-17",
+          "lcp": 1905,
+          "inp": 180,
+          "cls": 0,
+          "fcp": 1534,
+          "ttfb": 1229
+        },
+        {
+          "endDate": "2026-06-20",
+          "firstDate": "2026-05-24",
+          "lcp": 1897,
+          "inp": 182,
+          "cls": 0,
+          "fcp": 1531,
+          "ttfb": 1249
+        },
+        {
+          "endDate": "2026-06-27",
+          "firstDate": "2026-05-31",
+          "lcp": 1861,
+          "inp": 184,
+          "cls": 0,
+          "fcp": 1507,
+          "ttfb": 1244
+        },
+        {
+          "endDate": "2026-07-04",
+          "firstDate": "2026-06-07",
+          "lcp": 1750,
+          "inp": 186,
+          "cls": 0,
+          "fcp": 1406,
+          "ttfb": 1157
+        },
+        {
+          "endDate": "2026-07-11",
+          "firstDate": "2026-06-14",
+          "lcp": 1662,
+          "inp": 184,
+          "cls": 0,
+          "fcp": 1321,
+          "ttfb": 1072
+        },
+        {
+          "endDate": "2026-07-18",
+          "firstDate": "2026-06-21",
+          "lcp": 1573,
+          "inp": 186,
+          "cls": 0,
+          "fcp": 1228,
+          "ttfb": 966
+        },
+        {
+          "endDate": "2026-07-25",
+          "firstDate": "2026-06-28",
+          "lcp": 1438,
+          "inp": 183,
+          "cls": 0,
+          "fcp": 1087,
+          "ttfb": 824
+        },
+        {
+          "endDate": "2026-08-01",
+          "firstDate": "2026-07-05",
+          "lcp": 1387,
+          "inp": 188,
+          "cls": 0,
+          "fcp": 1034,
+          "ttfb": 766
+        },
+        {
+          "endDate": "2026-08-08",
+          "firstDate": "2026-07-12",
+          "lcp": 1357,
+          "inp": 195,
+          "cls": 0,
+          "fcp": 1007,
+          "ttfb": 746
+        },
+        {
+          "endDate": "2026-08-15",
+          "firstDate": "2026-07-19",
+          "lcp": 1333,
+          "inp": 200,
+          "cls": 0,
+          "fcp": 988,
+          "ttfb": 728
+        },
+        {
+          "endDate": "2026-08-22",
+          "firstDate": "2026-07-26",
+          "lcp": 1329,
+          "inp": 205,
+          "cls": 0,
+          "fcp": 977,
+          "ttfb": 720
+        }
+      ]
+    },
+    {
+      "pageId": "origin",
+      "url": "https://eshop.koh-i-noor.cz",
+      "scope": "origin",
+      "formFactor": "DESKTOP",
+      "status": "ok",
+      "error": null,
+      "points": [
+        {
+          "endDate": "2026-03-07",
+          "firstDate": "2026-02-08",
+          "lcp": 1405,
+          "inp": 37,
+          "cls": 0.03,
+          "fcp": 1153,
+          "ttfb": 1011
+        },
+        {
+          "endDate": "2026-03-14",
+          "firstDate": "2026-02-15",
+          "lcp": 1325,
+          "inp": 39,
+          "cls": 0.03,
+          "fcp": 1074,
+          "ttfb": 939
+        },
+        {
+          "endDate": "2026-03-21",
+          "firstDate": "2026-02-22",
+          "lcp": 1314,
+          "inp": 44,
+          "cls": 0.03,
+          "fcp": 1058,
+          "ttfb": 913
+        },
+        {
+          "endDate": "2026-03-28",
+          "firstDate": "2026-03-01",
+          "lcp": 1324,
+          "inp": 45,
+          "cls": 0.04,
+          "fcp": 1052,
+          "ttfb": 905
+        },
+        {
+          "endDate": "2026-04-04",
+          "firstDate": "2026-03-08",
+          "lcp": 1335,
+          "inp": 46,
+          "cls": 0.04,
+          "fcp": 1051,
+          "ttfb": 883
+        },
+        {
+          "endDate": "2026-04-11",
+          "firstDate": "2026-03-15",
+          "lcp": 1346,
+          "inp": 47,
+          "cls": 0.04,
+          "fcp": 1058,
+          "ttfb": 882
+        },
+        {
+          "endDate": "2026-04-18",
+          "firstDate": "2026-03-22",
+          "lcp": 1375,
+          "inp": 47,
+          "cls": 0.04,
+          "fcp": 1086,
+          "ttfb": 907
+        },
+        {
+          "endDate": "2026-04-25",
+          "firstDate": "2026-03-29",
+          "lcp": 1440,
+          "inp": 49,
+          "cls": 0.03,
+          "fcp": 1153,
+          "ttfb": 956
+        },
+        {
+          "endDate": "2026-05-02",
+          "firstDate": "2026-04-05",
+          "lcp": 1451,
+          "inp": 47,
+          "cls": 0.04,
+          "fcp": 1153,
+          "ttfb": 971
+        },
+        {
+          "endDate": "2026-05-09",
+          "firstDate": "2026-04-12",
+          "lcp": 1517,
+          "inp": 50,
+          "cls": 0.05,
+          "fcp": 1165,
+          "ttfb": 968
+        },
+        {
+          "endDate": "2026-05-16",
+          "firstDate": "2026-04-19",
+          "lcp": 1522,
+          "inp": 51,
+          "cls": 0.06,
+          "fcp": 1154,
+          "ttfb": 955
+        },
+        {
+          "endDate": "2026-05-23",
+          "firstDate": "2026-04-26",
+          "lcp": 1521,
+          "inp": 52,
+          "cls": 0.08,
+          "fcp": 1137,
+          "ttfb": 934
+        },
+        {
+          "endDate": "2026-05-30",
+          "firstDate": "2026-05-03",
+          "lcp": 1606,
+          "inp": 54,
+          "cls": 0.08,
+          "fcp": 1194,
+          "ttfb": 983
+        },
+        {
+          "endDate": "2026-06-06",
+          "firstDate": "2026-05-10",
+          "lcp": 1631,
+          "inp": 51,
+          "cls": 0.08,
+          "fcp": 1263,
+          "ttfb": 1064
+        },
+        {
+          "endDate": "2026-06-13",
+          "firstDate": "2026-05-17",
+          "lcp": 1652,
+          "inp": 52,
+          "cls": 0.08,
+          "fcp": 1286,
+          "ttfb": 1099
+        },
+        {
+          "endDate": "2026-06-20",
+          "firstDate": "2026-05-24",
+          "lcp": 1688,
+          "inp": 54,
+          "cls": 0.08,
+          "fcp": 1329,
+          "ttfb": 1109
+        },
+        {
+          "endDate": "2026-06-27",
+          "firstDate": "2026-05-31",
+          "lcp": 1681,
+          "inp": 57,
+          "cls": 0.09,
+          "fcp": 1327,
+          "ttfb": 1109
+        },
+        {
+          "endDate": "2026-07-04",
+          "firstDate": "2026-06-07",
+          "lcp": 1609,
+          "inp": 60,
+          "cls": 0.09,
+          "fcp": 1261,
+          "ttfb": 1056
+        },
+        {
+          "endDate": "2026-07-11",
+          "firstDate": "2026-06-14",
+          "lcp": 1535,
+          "inp": 62,
+          "cls": 0.09,
+          "fcp": 1204,
+          "ttfb": 998
+        },
+        {
+          "endDate": "2026-07-18",
+          "firstDate": "2026-06-21",
+          "lcp": 1382,
+          "inp": 61,
+          "cls": 0.09,
+          "fcp": 1053,
+          "ttfb": 895
+        },
+        {
+          "endDate": "2026-07-25",
+          "firstDate": "2026-06-28",
+          "lcp": 1243,
+          "inp": 60,
+          "cls": 0.09,
+          "fcp": 908,
+          "ttfb": 727
+        },
+        {
+          "endDate": "2026-08-01",
+          "firstDate": "2026-07-05",
+          "lcp": 1180,
+          "inp": 64,
+          "cls": 0.09,
+          "fcp": 843,
+          "ttfb": 644
+        },
+        {
+          "endDate": "2026-08-08",
+          "firstDate": "2026-07-12",
+          "lcp": 1188,
+          "inp": 65,
+          "cls": 0.09,
+          "fcp": 844,
+          "ttfb": 625
+        },
+        {
+          "endDate": "2026-08-15",
+          "firstDate": "2026-07-19",
+          "lcp": 1193,
+          "inp": 75,
+          "cls": 0.09,
+          "fcp": 863,
+          "ttfb": 625
+        },
+        {
+          "endDate": "2026-08-22",
+          "firstDate": "2026-07-26",
+          "lcp": 1181,
+          "inp": 76,
+          "cls": 0.09,
+          "fcp": 845,
+          "ttfb": 617
+        }
+      ]
+    },
+    {
+      "pageId": "origin",
+      "url": "https://eshop.koh-i-noor.cz",
+      "scope": "origin",
+      "formFactor": "ALL",
+      "status": "ok",
+      "error": null,
+      "points": [
+        {
+          "endDate": "2026-03-07",
+          "firstDate": "2026-02-08",
+          "lcp": 1525,
+          "inp": 96,
+          "cls": 0.01,
+          "fcp": 1230,
+          "ttfb": 1008
+        },
+        {
+          "endDate": "2026-03-14",
+          "firstDate": "2026-02-15",
+          "lcp": 1513,
+          "inp": 106,
+          "cls": 0.01,
+          "fcp": 1208,
+          "ttfb": 972
+        },
+        {
+          "endDate": "2026-03-21",
+          "firstDate": "2026-02-22",
+          "lcp": 1535,
+          "inp": 118,
+          "cls": 0.01,
+          "fcp": 1215,
+          "ttfb": 967
+        },
+        {
+          "endDate": "2026-03-28",
+          "firstDate": "2026-03-01",
+          "lcp": 1566,
+          "inp": 127,
+          "cls": 0.01,
+          "fcp": 1233,
+          "ttfb": 986
+        },
+        {
+          "endDate": "2026-04-04",
+          "firstDate": "2026-03-08",
+          "lcp": 1573,
+          "inp": 130,
+          "cls": 0.01,
+          "fcp": 1231,
+          "ttfb": 976
+        },
+        {
+          "endDate": "2026-04-11",
+          "firstDate": "2026-03-15",
+          "lcp": 1597,
+          "inp": 131,
+          "cls": 0.01,
+          "fcp": 1243,
+          "ttfb": 985
+        },
+        {
+          "endDate": "2026-04-18",
+          "firstDate": "2026-03-22",
+          "lcp": 1637,
+          "inp": 135,
+          "cls": 0.01,
+          "fcp": 1282,
+          "ttfb": 1022
+        },
+        {
+          "endDate": "2026-04-25",
+          "firstDate": "2026-03-29",
+          "lcp": 1700,
+          "inp": 135,
+          "cls": 0.01,
+          "fcp": 1340,
+          "ttfb": 1079
+        },
+        {
+          "endDate": "2026-05-02",
+          "firstDate": "2026-04-05",
+          "lcp": 1739,
+          "inp": 134,
+          "cls": 0.01,
+          "fcp": 1367,
+          "ttfb": 1105
+        },
+        {
+          "endDate": "2026-05-09",
+          "firstDate": "2026-04-12",
+          "lcp": 1774,
+          "inp": 139,
+          "cls": 0.01,
+          "fcp": 1378,
+          "ttfb": 1098
+        },
+        {
+          "endDate": "2026-05-16",
+          "firstDate": "2026-04-19",
+          "lcp": 1753,
+          "inp": 138,
+          "cls": 0.01,
+          "fcp": 1350,
+          "ttfb": 1070
+        },
+        {
+          "endDate": "2026-05-23",
+          "firstDate": "2026-04-26",
+          "lcp": 1729,
+          "inp": 140,
+          "cls": 0.01,
+          "fcp": 1324,
+          "ttfb": 1041
+        },
+        {
+          "endDate": "2026-05-30",
+          "firstDate": "2026-05-03",
+          "lcp": 1767,
+          "inp": 143,
+          "cls": 0.01,
+          "fcp": 1364,
+          "ttfb": 1077
+        },
+        {
+          "endDate": "2026-06-06",
+          "firstDate": "2026-05-10",
+          "lcp": 1800,
+          "inp": 137,
+          "cls": 0.01,
+          "fcp": 1417,
+          "ttfb": 1145
+        },
+        {
+          "endDate": "2026-06-13",
+          "firstDate": "2026-05-17",
+          "lcp": 1827,
+          "inp": 138,
+          "cls": 0.01,
+          "fcp": 1454,
+          "ttfb": 1186
+        },
+        {
+          "endDate": "2026-06-20",
+          "firstDate": "2026-05-24",
+          "lcp": 1833,
+          "inp": 138,
+          "cls": 0.02,
+          "fcp": 1468,
+          "ttfb": 1205
+        },
+        {
+          "endDate": "2026-06-27",
+          "firstDate": "2026-05-31",
+          "lcp": 1811,
+          "inp": 140,
+          "cls": 0.02,
+          "fcp": 1451,
+          "ttfb": 1199
+        },
+        {
+          "endDate": "2026-07-04",
+          "firstDate": "2026-06-07",
+          "lcp": 1709,
+          "inp": 147,
+          "cls": 0.01,
+          "fcp": 1367,
+          "ttfb": 1124
+        },
+        {
+          "endDate": "2026-07-11",
+          "firstDate": "2026-06-14",
+          "lcp": 1635,
+          "inp": 150,
+          "cls": 0.01,
+          "fcp": 1293,
+          "ttfb": 1051
+        },
+        {
+          "endDate": "2026-07-18",
+          "firstDate": "2026-06-21",
+          "lcp": 1524,
+          "inp": 151,
+          "cls": 0.01,
+          "fcp": 1184,
+          "ttfb": 943
+        },
+        {
+          "endDate": "2026-07-25",
+          "firstDate": "2026-06-28",
+          "lcp": 1394,
+          "inp": 152,
+          "cls": 0.01,
+          "fcp": 1048,
+          "ttfb": 805
+        },
+        {
+          "endDate": "2026-08-01",
+          "firstDate": "2026-07-05",
+          "lcp": 1341,
+          "inp": 159,
+          "cls": 0.01,
+          "fcp": 992,
+          "ttfb": 739
+        },
+        {
+          "endDate": "2026-08-08",
+          "firstDate": "2026-07-12",
+          "lcp": 1317,
+          "inp": 164,
+          "cls": 0.01,
+          "fcp": 973,
+          "ttfb": 719
+        },
+        {
+          "endDate": "2026-08-15",
+          "firstDate": "2026-07-19",
+          "lcp": 1309,
+          "inp": 174,
+          "cls": 0.01,
+          "fcp": 964,
+          "ttfb": 710
+        },
+        {
+          "endDate": "2026-08-22",
+          "firstDate": "2026-07-26",
+          "lcp": 1305,
+          "inp": 176,
+          "cls": 0.01,
+          "fcp": 955,
+          "ttfb": 701
+        }
+      ]
+    }
+  ]
 }
