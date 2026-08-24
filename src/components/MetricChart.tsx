@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import type { MetricId, MetricRun } from '../lib/types'
+﻿import { useMemo, useState } from 'react'
+import type { MetricId, MetricRun, PageTarget } from '../lib/types'
 import {
   formatDateTime,
   formatMetricValue,
@@ -10,6 +10,7 @@ import { metricSeries, timeAxisTicks } from '../lib/series'
 
 type MetricChartProps = {
   runs: MetricRun[]
+  pages: PageTarget[]
   metricId: MetricId
   from: number
   to: number
@@ -25,12 +26,22 @@ function scale(value: number, inMin: number, inMax: number, outMin: number, outM
   return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin)
 }
 
-export function MetricChart({ runs, metricId, from, to, rangeLabel }: MetricChartProps) {
+export function MetricChart({ runs, pages, metricId, from, to, rangeLabel }: MetricChartProps) {
   const metric = getMetric(metricId)
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null)
+  const [hoverRunId, setHoverRunId] = useState<string | null>(null)
   const points = useMemo(
     () => metricSeries(runs, metricId).filter((point) => point.time >= from && point.time <= to),
     [from, metricId, runs, to],
+  )
+  const series = useMemo(
+    () =>
+      pages
+        .map((page) => ({
+          page,
+          points: points.filter((point) => point.run.pageId === page.id),
+        }))
+        .filter((item) => item.points.length > 0),
+    [pages, points],
   )
   const errors = runs.filter((run) => {
     if (run.status !== 'error') return false
@@ -49,13 +60,10 @@ export function MetricChart({ runs, metricId, from, to, rangeLabel }: MetricChar
   const x = (time: number) => scale(time, from, to, PAD.left, WIDTH - PAD.right)
   const y = (value: number) => scale(value, minValue, maxValue, HEIGHT - PAD.bottom, PAD.top)
 
-  const path = points
-    .map((point, index) => `${index === 0 ? 'M' : 'L'} ${x(point.time)} ${y(point.value)}`)
-    .join(' ')
-
   const goodY = y(metric.good)
   const poorY = y(metric.poor)
-  const hover = hoverIndex != null ? points[hoverIndex] : null
+  const hover = hoverRunId ? points.find((point) => point.run.id === hoverRunId) : null
+  const hoverPage = hover ? pages.find((page) => page.id === hover.run.pageId) : null
 
   const ticks = 4
   const yTicks = Array.from({ length: ticks + 1 }, (_, index) => {
@@ -78,12 +86,23 @@ export function MetricChart({ runs, metricId, from, to, rangeLabel }: MetricChar
           V tomto výřezu zatím nejsou úspěšné hodnoty. Graf se doplní po prvním Lighthouse běhu.
         </div>
       ) : (
-        <svg
-          viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-          role="img"
-          aria-label={`${metric.label} · ${rangeLabel}`}
-          onMouseLeave={() => setHoverIndex(null)}
-        >
+        <>
+          {series.length > 1 && (
+            <div className="chart-legend" aria-label="Legenda měřených URL">
+              {series.map(({ page }) => (
+                <span key={page.id} className={`series-${page.id}`}>
+                  <i aria-hidden="true" />
+                  {page.label}
+                </span>
+              ))}
+            </div>
+          )}
+          <svg
+            viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+            role="img"
+            aria-label={`${metric.label} · ${rangeLabel}`}
+            onMouseLeave={() => setHoverRunId(null)}
+          >
           <rect className="chart-paper" x="0" y="0" width={WIDTH} height={HEIGHT} />
           {Array.from({ length: 9 }, (_, index) => (
             <line
@@ -118,15 +137,22 @@ export function MetricChart({ runs, metricId, from, to, rangeLabel }: MetricChar
               {tick.label}
             </text>
           ))}
-          {path && <path className="chart-line" d={path} />}
-          {points.map((point, index) => (
+          {series.map(({ page, points: seriesPoints }) => {
+            const path = seriesPoints
+              .map((point, index) => `${index === 0 ? 'M' : 'L'} ${x(point.time)} ${y(point.value)}`)
+              .join(' ')
+            return path ? (
+              <path key={page.id} className={`chart-line series-${page.id}`} d={path} />
+            ) : null
+          })}
+          {points.map((point) => (
             <circle
               key={point.run.id}
-              className={`chart-dot rating-${rateValue(metricId, point.value)}`}
+              className={`chart-dot series-${point.run.pageId} rating-${rateValue(metricId, point.value)}`}
               cx={x(point.time)}
               cy={y(point.value)}
-              r={hoverIndex === index ? 6 : 3.5}
-              onMouseEnter={() => setHoverIndex(index)}
+              r={hoverRunId === point.run.id ? 6 : 3.5}
+              onMouseEnter={() => setHoverRunId(point.run.id)}
             />
           ))}
           {errors.map((run) => {
@@ -152,21 +178,23 @@ export function MetricChart({ runs, metricId, from, to, rangeLabel }: MetricChar
                 y2={HEIGHT - PAD.bottom}
               />
               <rect
-                x={Math.min(x(hover.time) + 10, WIDTH - 210)}
+                x={Math.min(x(hover.time) + 10, WIDTH - 280)}
                 y={Math.max(y(hover.value) - 46, 8)}
-                width="196"
+                width="266"
                 height="40"
                 rx="2"
               />
               <text
-                x={Math.min(x(hover.time) + 20, WIDTH - 200)}
+                x={Math.min(x(hover.time) + 20, WIDTH - 270)}
                 y={Math.max(y(hover.value) - 22, 32)}
               >
+                {series.length > 1 ? `${hoverPage?.label ?? hover.run.pageId} · ` : ''}
                 {formatDateTime(hover.run.measuredAt)} · {formatMetricValue(metricId, hover.value)}
               </text>
             </g>
           )}
-        </svg>
+          </svg>
+        </>
       )}
     </figure>
   )
