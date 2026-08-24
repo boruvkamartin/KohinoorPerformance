@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "kohinoorperformance",
   "private": true,
   "version": "0.0.0",
@@ -13,7 +13,8 @@
     "measure:smoke": "node scripts/run-lighthouse.mjs --pages=homepage --profiles=mobile,desktop",
     "crux": "node scripts/fetch-crux.mjs",
     "alert": "node scripts/notify-google-chat.mjs",
-    "alert:dry": "node scripts/notify-google-chat.mjs --dry-run"
+    "alert:dry": "node scripts/notify-google-chat.mjs --dry-run",
+    "alert:ping": "node scripts/notify-google-chat.mjs --ping"
   },
   "dependencies": {
     "react": "^19.2.8",

@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { MetricId, MetricRun, PageTarget } from '../lib/types'
 import {
   formatDateTime,

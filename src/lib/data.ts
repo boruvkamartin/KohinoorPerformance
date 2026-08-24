@@ -1,4 +1,4 @@
-﻿import type { CruxFile, MetricsFile } from './types'
+import type { CruxFile, MetricsFile } from './types'
 
 const GITHUB_BASE =
   'https://raw.githubusercontent.com/boruvkamartin/KohinoorPerformance/main/public/data'

@@ -1,4 +1,4 @@
-﻿name: Lighthouse monitor
+name: Lighthouse monitor
 
 on:
   schedule:

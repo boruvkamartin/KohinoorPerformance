@@ -1,4 +1,4 @@
-﻿# KOH-I-NOOR · monitoring rychlosti webu
+# KOH-I-NOOR · monitoring rychlosti webu
 
 Mini dashboard pro sledování rychlosti [eshop.koh-i-noor.cz](https://eshop.koh-i-noor.cz/). GitHub Actions od 10:07 do 21:47 spouští Lighthouse (lab) každých 20 minut, ve zbytku dne každých 30 minut. Jednou denně stáhne Chrome UX Report (field data od reálných uživatelů Chrome). Dashboard běží na GitHub Pages.
 

@@ -1,4 +1,4 @@
-﻿/* oxlint-disable set-state-in-effect -- App loads metrics on mount and from Obnovit data */
+/* oxlint-disable set-state-in-effect -- App loads metrics on mount and from Obnovit data */
 import { useEffect, useMemo, useState } from 'react'
 import { FieldReport } from './components/FieldReport'
 import { Filters } from './components/Filters'

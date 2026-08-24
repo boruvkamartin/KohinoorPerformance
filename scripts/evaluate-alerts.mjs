@@ -1,4 +1,4 @@
-﻿export function pageLabel(pages, pageId) {
+export function pageLabel(pages, pageId) {
   return pages.find((page) => page.id === pageId)?.label ?? pageId
 }
 

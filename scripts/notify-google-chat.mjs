@@ -1,4 +1,4 @@
-﻿import { readFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
@@ -16,6 +16,7 @@ const CONFIG_PATH = join(rootDir, 'src', 'config', 'alerts.json')
 function parseArgs(argv) {
   return {
     dryRun: argv.includes('--dry-run'),
+    ping: argv.includes('--ping'),
     metricsPath: process.env.METRICS_PATH || DEFAULT_METRICS,
     statePath: process.env.ALERT_STATE_PATH || DEFAULT_STATE,
   }
@@ -54,6 +55,28 @@ async function main() {
   const options = parseArgs(process.argv.slice(2))
   const webhookUrl = process.env.GOOGLE_CHAT_WEBHOOK_URL
   const config = readJson(CONFIG_PATH)
+
+  if (options.ping) {
+    if (!webhookUrl) {
+      throw new Error('Chybí GOOGLE_CHAT_WEBHOOK_URL.')
+    }
+    const text = [
+      '*Koh-i-noor: test webhooku*',
+      'Tahle zpráva je jen ověření, že Google Chat bere notifikace z monitoringu rychlosti.',
+      '',
+      config.dashboardUrl ? `<${config.dashboardUrl}|Otevřít dashboard>` : '',
+    ]
+      .filter(Boolean)
+      .join('\n')
+    if (options.dryRun) {
+      console.log(text)
+      console.log('Dry-run: zpráva se neposílá.')
+      return
+    }
+    await postGoogleChat(webhookUrl, text)
+    console.log('Testovací zpráva odeslána do Google Chat.')
+    return
+  }
   const metrics = readJson(options.metricsPath, { pages: [], runs: [] })
   const previous = readJson(options.statePath, { version: 1, open: {} })
   const current = evaluateAlerts(metrics.runs ?? [], config, metrics.pages ?? [])
