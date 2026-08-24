@@ -1,4 +1,4 @@
-name: Lighthouse monitor
+﻿name: Lighthouse monitor
 
 on:
   schedule:
@@ -69,7 +69,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/metrics.json public/data/alert-state.json
+          git add public/data/metrics.json
+          if [ -f public/data/alert-state.json ]; then
+            git add public/data/alert-state.json
+          fi
           if git diff --cached --quiet; then
             echo "No metric changes"
             exit 0
