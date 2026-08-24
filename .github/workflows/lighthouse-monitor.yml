@@ -1,8 +1,18 @@
-name: Lighthouse monitor
+﻿name: Lighthouse monitor
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    # Den 8:07–22:46 Europe/Prague (~20 min, mimo špičku :00/:20/:40)
+    - cron: '7,26,46 8-22 * * *'
+      timezone: Europe/Prague
+    # 23:07 poslední denní běh
+    - cron: '7 23 * * *'
+      timezone: Europe/Prague
+    # Noc 23:37 a 00:07–07:37 každých 30 min
+    - cron: '37 23 * * *'
+      timezone: Europe/Prague
+    - cron: '7,37 0-7 * * *'
+      timezone: Europe/Prague
   workflow_dispatch:
 
 concurrency:

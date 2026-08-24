@@ -1,11 +1,11 @@
-import type { MetricsFile } from './types'
+import type { CruxFile, MetricsFile } from './types'
 
-const GITHUB_RAW =
-  'https://raw.githubusercontent.com/boruvkamartin/KohinoorPerformance/main/public/data/metrics.json'
-const LOCAL_PATH = '/data/metrics.json'
+const GITHUB_BASE =
+  'https://raw.githubusercontent.com/boruvkamartin/KohinoorPerformance/main/public/data'
+const LOCAL_BASE = '/data'
 
-type LoadResult = {
-  data: MetricsFile
+type LoadResult<T> = {
+  data: T
   source: 'github' | 'local'
 }
 
@@ -15,36 +15,52 @@ function isMetricsFile(value: unknown): value is MetricsFile {
   return Array.isArray(record.pages) && Array.isArray(record.runs)
 }
 
-async function fetchMetrics(url: string): Promise<MetricsFile> {
+function isCruxFile(value: unknown): value is CruxFile {
+  if (!value || typeof value !== 'object') return false
+  const record = value as Partial<CruxFile>
+  return Array.isArray(record.records) && Array.isArray(record.history)
+}
+
+async function fetchJson(url: string): Promise<unknown> {
   const response = await fetch(url, { cache: 'no-store' })
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}`)
   }
-  const payload: unknown = await response.json()
-  if (!isMetricsFile(payload)) {
-    throw new Error('Neplatný formát souboru metrik')
-  }
-  return payload
+  return response.json()
 }
 
-export async function loadMetricsFile(): Promise<LoadResult> {
+async function loadFile<T>(
+  filename: string,
+  guard: (value: unknown) => value is T,
+  invalidMessage: string,
+): Promise<LoadResult<T>> {
   const bust = Date.now()
-  const candidates: LoadResult['source'][] = import.meta.env.DEV
+  const candidates: LoadResult<T>['source'][] = import.meta.env.DEV
     ? ['local']
     : ['github', 'local']
   const errors: string[] = []
 
   for (const source of candidates) {
-    const url =
-      source === 'github' ? `${GITHUB_RAW}?t=${bust}` : `${LOCAL_PATH}?t=${bust}`
+    const base = source === 'github' ? GITHUB_BASE : LOCAL_BASE
     try {
-      const data = await fetchMetrics(url)
-      return { data, source }
+      const payload = await fetchJson(`${base}/${filename}?t=${bust}`)
+      if (!guard(payload)) {
+        throw new Error(invalidMessage)
+      }
+      return { data: payload, source }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)
       errors.push(`${source}: ${message}`)
     }
   }
 
-  throw new Error(`Nepodařilo se načíst metriky (${errors.join('; ')}).`)
+  throw new Error(`Nepodařilo se načíst ${filename} (${errors.join('; ')}).`)
+}
+
+export async function loadMetricsFile(): Promise<LoadResult<MetricsFile>> {
+  return loadFile('metrics.json', isMetricsFile, 'Neplatný formát souboru metrik')
+}
+
+export async function loadCruxFile(): Promise<LoadResult<CruxFile>> {
+  return loadFile('crux.json', isCruxFile, 'Neplatný formát CrUX souboru')
 }

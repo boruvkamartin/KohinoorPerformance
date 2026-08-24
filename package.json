@@ -8,9 +8,10 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "node --test scripts/parse-lighthouse.test.mjs",
+    "test": "node --test scripts/parse-lighthouse.test.mjs scripts/parse-crux.test.mjs",
     "measure": "node scripts/run-lighthouse.mjs",
-    "measure:smoke": "node scripts/run-lighthouse.mjs --pages=homepage --profiles=mobile,desktop"
+    "measure:smoke": "node scripts/run-lighthouse.mjs --pages=homepage --profiles=mobile,desktop",
+    "crux": "node scripts/fetch-crux.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",

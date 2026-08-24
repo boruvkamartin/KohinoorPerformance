@@ -1,7 +1,7 @@
-import type { MetricId, MetricValues, Rating } from './types'
+import type { FieldMetricId, MetricId, MetricValues, Rating } from './types'
 
 export type MetricDefinition = {
-  id: MetricId
+  id: MetricId | FieldMetricId
   label: string
   shortLabel: string
   unit: 'score' | 'ms' | 'cls'
@@ -11,7 +11,7 @@ export type MetricDefinition = {
   poor: number
 }
 
-export const METRICS: MetricDefinition[] = [
+export const METRICS: Array<MetricDefinition & { id: MetricId }> = [
   {
     id: 'performance',
     label: 'Performance',
@@ -84,16 +84,34 @@ export const METRICS: MetricDefinition[] = [
   },
 ]
 
-const METRIC_BY_ID = Object.fromEntries(METRICS.map((metric) => [metric.id, metric])) as Record<
-  MetricId,
-  MetricDefinition
->
+export const INP_METRIC: MetricDefinition & { id: 'inp' } = {
+  id: 'inp',
+  label: 'Interaction to Next Paint',
+  shortLabel: 'INP',
+  unit: 'ms',
+  description: 'Jak rychle stránka zareaguje na klik, tap nebo klávesu.',
+  higherIsBetter: false,
+  good: 200,
+  poor: 500,
+}
 
-export function getMetric(id: MetricId): MetricDefinition {
+export const FIELD_METRICS: Array<MetricDefinition & { id: FieldMetricId }> = [
+  METRICS.find((metric) => metric.id === 'lcp') as MetricDefinition & { id: 'lcp' },
+  INP_METRIC,
+  METRICS.find((metric) => metric.id === 'cls') as MetricDefinition & { id: 'cls' },
+  METRICS.find((metric) => metric.id === 'fcp') as MetricDefinition & { id: 'fcp' },
+  METRICS.find((metric) => metric.id === 'ttfb') as MetricDefinition & { id: 'ttfb' },
+]
+
+const METRIC_BY_ID = Object.fromEntries(
+  [...METRICS, INP_METRIC].map((metric) => [metric.id, metric]),
+) as Record<MetricId | FieldMetricId, MetricDefinition>
+
+export function getMetric(id: MetricId | FieldMetricId): MetricDefinition {
   return METRIC_BY_ID[id]
 }
 
-export function rateValue(id: MetricId, value: number | null | undefined): Rating {
+export function rateValue(id: MetricId | FieldMetricId, value: number | null | undefined): Rating {
   if (value == null || !Number.isFinite(value)) return 'unknown'
   const metric = getMetric(id)
   if (metric.higherIsBetter) {
@@ -106,7 +124,10 @@ export function rateValue(id: MetricId, value: number | null | undefined): Ratin
   return 'poor'
 }
 
-export function formatMetricValue(id: MetricId, value: number | null | undefined): string {
+export function formatMetricValue(
+  id: MetricId | FieldMetricId,
+  value: number | null | undefined,
+): string {
   if (value == null || !Number.isFinite(value)) return '—'
   const metric = getMetric(id)
   if (metric.unit === 'score') {
@@ -145,6 +166,23 @@ export function formatTime(iso: string): string {
     hour: '2-digit',
     minute: '2-digit',
   })
+}
+
+export function formatDate(iso: string | null | undefined): string {
+  if (!iso) return '—'
+  const date = iso.length <= 10 ? new Date(`${iso}T00:00:00Z`) : new Date(iso)
+  if (Number.isNaN(date.getTime())) return '—'
+  return date.toLocaleDateString('cs-CZ', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  })
+}
+
+export function formatPercent(value: number | null | undefined): string {
+  if (value == null || !Number.isFinite(value)) return '—'
+  return `${Math.round(value * 100).toLocaleString('cs-CZ')} %`
 }
 
 export function formatRelative(iso: string | null | undefined, now = Date.now()): string {
