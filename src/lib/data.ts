@@ -1,8 +1,8 @@
-import type { CruxFile, MetricsFile } from './types'
+﻿import type { CruxFile, MetricsFile } from './types'
 
 const GITHUB_BASE =
   'https://raw.githubusercontent.com/boruvkamartin/KohinoorPerformance/main/public/data'
-const LOCAL_BASE = '/data'
+const LOCAL_BASE = `${import.meta.env.BASE_URL}data`.replace(/\/$/, '')
 
 type LoadResult<T> = {
   data: T

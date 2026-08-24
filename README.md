@@ -1,6 +1,6 @@
 ﻿# KOH-I-NOOR · monitoring rychlosti webu
 
-Mini dashboard pro sledování rychlosti [eshop.koh-i-noor.cz](https://eshop.koh-i-noor.cz/). GitHub Actions ve dne (8:07–23:07) spustí Lighthouse (lab) každých ~20 minut, v noci každých 30 minut. Jednou denně stáhne Chrome UX Report (field data od reálných uživatelů Chrome). Dashboard na Netlify z toho kreslí grafy a tabulky.
+Mini dashboard pro sledování rychlosti [eshop.koh-i-noor.cz](https://eshop.koh-i-noor.cz/). GitHub Actions od 10:07 do 21:47 spouští Lighthouse (lab) každých 20 minut, ve zbytku dne každých 30 minut. Jednou denně stáhne Chrome UX Report (field data od reálných uživatelů Chrome). Dashboard běží na GitHub Pages.
 
 ## Co se měří
 
@@ -19,7 +19,7 @@ Ukládané Lighthouse hodnoty: Performance skóre, FCP, LCP, Speed Index, TBT, C
 
 | Zdroj | Co to je | Obnova |
 | --- | --- | --- |
-| Lighthouse | Laboratorní test v čistém Chrome | 8:07–23:07 každých ~20 min (07/26/46), v noci každých 30 min (07/37) |
+| Lighthouse | Laboratorní test v čistém Chrome | 10:07–21:47 každých 20 min (07/27/47), jinak každých 30 min (07/37) |
 | Chrome UX Report | Reální uživatelé Chrome, 75. percentil | jednou denně |
 
 CrUX není denní snapshot. Google každý den zveřejní nový **28denní klouzavý průměr** (obvykle kolem 04:00 UTC / 6:00 SELČ, data bývají 1–2 dny stará). Historie je po týdnech a každý bod je zase 28denní okno. Stránka bez dostatku návštěv v CrUX není; dashboard pak ukáže origin celého e-shopu.
@@ -57,19 +57,20 @@ Parser a retenční logiku ověří `npm test`. Produkční build je `npm run bu
 
 ## GitHub Actions
 
-Workflow [`.github/workflows/lighthouse-monitor.yml`](.github/workflows/lighthouse-monitor.yml) běží v `Europe/Prague`: ve dne v :07, :26 a :46 (8:07–23:07), v noci v :07 a :37. Jde spustit i ručně přes **Actions → Lighthouse monitor → Run workflow**. Field data stahuje [`.github/workflows/crux-monitor.yml`](.github/workflows/crux-monitor.yml) jednou denně a také ručně (**CrUX field data**).
+Workflow [`.github/workflows/lighthouse-monitor.yml`](.github/workflows/lighthouse-monitor.yml) běží v `Europe/Prague`: od 10:07 do 21:47 v :07, :27 a :47, jinak v :07 a :37. Jde spustit i ručně přes **Actions → Lighthouse monitor → Run workflow**. Field data stahuje [`.github/workflows/crux-monitor.yml`](.github/workflows/crux-monitor.yml) jednou denně a také ručně (**CrUX field data**).
 
 Souběžné běhy jsou zakázané. GitHub cron není realtime služba, ve špičce může začít o několik minut později. V datech je vždy skutečný čas měření.
 
 Po týdnu monitoring vypnete v záložce Actions (Disable workflow), nebo smažete soubor workflow.
 
-## Nasazení na Netlify
+## Nasazení na GitHub Pages
 
-1. Pushněte repo na GitHub (už je napojené na `boruvkamartin/KohinoorPerformance`).
-2. V Netlify: **Add new site → Import an existing project** a vyberte tento repozitář.
-3. Build command `npm run build`, publish directory `dist`. Stejné hodnoty jsou v [`netlify.toml`](netlify.toml).
+1. V repozitáři otevřete **Settings → Pages**.
+2. V **Build and deployment → Source** vyberte **GitHub Actions**.
+3. Pushněte změny na `main`, nebo spusťte **Actions → Deploy dashboard to GitHub Pages → Run workflow**.
+4. Dashboard bude na <https://boruvkamartin.github.io/KohinoorPerformance/>.
 
-Dashboard v produkci bere čerstvý JSON z `raw.githubusercontent.com`, takže se po každém měření nemusí znovu buildit Netlify. Repozitář proto musí zůstat veřejný, jinak GitHub raw soubor z prohlížeče nenačte. Záložní snapshot je soubor z posledního deploye.
+Deployment zajišťuje [`.github/workflows/pages.yml`](.github/workflows/pages.yml). Commity, které mění pouze `public/data/**`, nový deploy nespouštějí: dashboard bere čerstvý JSON přímo z `raw.githubusercontent.com`. Repozitář proto musí zůstat veřejný. Meta tagy `noindex` zůstávají aktivní, aby dashboard neindexovaly vyhledávače.
 
 ## Jak číst barvy
 
