@@ -57,11 +57,19 @@ jobs:
           if-no-files-found: ignore
           retention-days: 3
 
+      - name: Notify Google Chat
+        continue-on-error: true
+        env:
+          GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}
+          METRICS_PATH: public/data/metrics.json
+          ALERT_STATE_PATH: public/data/alert-state.json
+        run: node scripts/notify-google-chat.mjs
+
       - name: Commit metrics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/metrics.json
+          git add public/data/metrics.json public/data/alert-state.json
           if git diff --cached --quiet; then
             echo "No metric changes"
             exit 0

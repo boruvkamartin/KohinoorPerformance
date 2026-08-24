@@ -1,0 +1,57 @@
+{
+  "consecutive": 2,
+  "baselineRuns": 6,
+  "jumpRatio": 0.5,
+  "dashboardUrl": "https://boruvkamartin.github.io/KohinoorPerformance/",
+  "metrics": {
+    "performance": {
+      "higherIsBetter": true,
+      "label": "Performance",
+      "unit": "score",
+      "minDelta": 12,
+      "mobile": { "limit": 15 },
+      "desktop": { "limit": 40 }
+    },
+    "lcp": {
+      "higherIsBetter": false,
+      "label": "LCP",
+      "unit": "ms",
+      "minDelta": 3000,
+      "mobile": { "limit": 20000 },
+      "desktop": { "limit": 8000 }
+    },
+    "fcp": {
+      "higherIsBetter": false,
+      "label": "FCP",
+      "unit": "ms",
+      "minDelta": 2500,
+      "mobile": { "limit": 12000 },
+      "desktop": { "limit": 5000 }
+    },
+    "tbt": {
+      "higherIsBetter": false,
+      "label": "TBT",
+      "unit": "ms",
+      "minDelta": 800,
+      "mobile": { "limit": 3000 },
+      "desktop": { "limit": 800 }
+    },
+    "cls": {
+      "higherIsBetter": false,
+      "label": "CLS",
+      "unit": "cls",
+      "minDelta": 0.12,
+      "mobile": { "limit": 0.4 },
+      "desktop": { "limit": 0.35 }
+    },
+    "ttfb": {
+      "higherIsBetter": false,
+      "label": "TTFB",
+      "unit": "ms",
+      "minDelta": 800,
+      "mobile": { "limit": 2000 },
+      "desktop": { "limit": 2000 }
+    }
+  }
+}
+

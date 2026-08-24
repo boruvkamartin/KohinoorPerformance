@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "kohinoorperformance",
   "private": true,
   "version": "0.0.0",
@@ -8,10 +8,12 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "node --test scripts/parse-lighthouse.test.mjs scripts/parse-crux.test.mjs",
+    "test": "node --test scripts/parse-lighthouse.test.mjs scripts/parse-crux.test.mjs scripts/evaluate-alerts.test.mjs",
     "measure": "node scripts/run-lighthouse.mjs",
     "measure:smoke": "node scripts/run-lighthouse.mjs --pages=homepage --profiles=mobile,desktop",
-    "crux": "node scripts/fetch-crux.mjs"
+    "crux": "node scripts/fetch-crux.mjs",
+    "alert": "node scripts/notify-google-chat.mjs",
+    "alert:dry": "node scripts/notify-google-chat.mjs --dry-run"
   },
   "dependencies": {
     "react": "^19.2.8",
