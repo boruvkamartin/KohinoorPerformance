@@ -1,22 +1,5 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-25T03:11:03.245Z",
-  "open": {
-    "product|mobile|fcp": {
-      "kind": "metric",
-      "pageId": "product",
-      "profile": "mobile",
-      "metricId": "fcp",
-      "value": 7286.0328,
-      "limit": 7109.405500000001,
-      "unit": "ms",
-      "label": "FCP",
-      "reason": "jump",
-      "streak": 2,
-      "error": null,
-      "key": "product|mobile|fcp",
-      "pageLabel": "Produkt",
-      "openedAt": "2026-08-25T03:11:03.245Z"
-    }
-  }
+  "updatedAt": "2026-08-25T04:21:44.638Z",
+  "open": {}
 }
