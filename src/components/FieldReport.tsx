@@ -1,5 +1,6 @@
-import type { CSSProperties } from 'react'
+﻿import type { CSSProperties } from 'react'
 import { useState } from 'react'
+import { FieldHistoryChart } from './FieldHistoryChart'
 import {
   FIELD_METRICS,
   formatDate,
@@ -7,12 +8,10 @@ import {
   formatMetricValue,
   formatPercent,
   formatRelative,
-  getMetric,
   rateValue,
 } from '../lib/metrics'
 import type {
   CruxFile,
-  CruxHistoryPoint,
   CruxRecord,
   FieldMetricId,
   FormFactor,
@@ -132,90 +131,5 @@ export function FieldReport({ data, pages, pageId, profile }: FieldReportProps) 
         </>
       )}
     </section>
-  )
-}
-
-function FieldHistoryChart({
-  points,
-  metricId,
-}: {
-  points: CruxHistoryPoint[]
-  metricId: FieldMetricId
-}) {
-  const metric = getMetric(metricId)
-  const series = points
-    .map((point) => ({
-      time: Date.parse(`${point.endDate}T00:00:00Z`),
-      value: point[metricId],
-      label: point.endDate,
-    }))
-    .filter((point) => point.value != null && Number.isFinite(point.time)) as {
-    time: number
-    value: number
-    label: string
-  }[]
-
-  if (series.length === 0) {
-    return (
-      <div className="chart-empty">
-        Historie CrUX zatím chybí. Po prvním stažení se tu objeví týdenní body (každý je 28denní okno).
-      </div>
-    )
-  }
-
-  const width = 960
-  const height = 260
-  const pad = { top: 20, right: 16, bottom: 36, left: 72 }
-  const min = 0
-  const max = Math.max(metric.poor * 1.2, ...series.map((point) => point.value))
-  const x = (time: number) => {
-    const first = series[0].time
-    const last = series[series.length - 1].time
-    if (last === first) return pad.left + (width - pad.left - pad.right) / 2
-    return pad.left + ((time - first) / (last - first)) * (width - pad.left - pad.right)
-  }
-  const y = (value: number) =>
-    height - pad.bottom - ((value - min) / (max - min || 1)) * (height - pad.top - pad.bottom)
-  const path = series
-    .map((point, index) => `${index === 0 ? 'M' : 'L'} ${x(point.time)} ${y(point.value)}`)
-    .join(' ')
-
-  return (
-    <figure className="chart">
-      <figcaption>
-        <strong>{metric.label} · p75</strong>
-        <span>Každý bod je 28denní průměr končící daným datem, ne jeden den provozu.</span>
-      </figcaption>
-      <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`${metric.label} historie CrUX`}>
-        <rect className="chart-paper" x="0" y="0" width={width} height={height} />
-        <text className="chart-tick" x={pad.left - 8} y={y(max) + 4} textAnchor="end">
-          {formatMetricValue(metricId, max)}
-        </text>
-        <text className="chart-tick" x={pad.left - 8} y={y(min) + 4} textAnchor="end">
-          {formatMetricValue(metricId, min)}
-        </text>
-        <text className="chart-tick" x={x(series[0].time)} y={height - 12} textAnchor="middle">
-          {formatDate(series[0].label)}
-        </text>
-        <text
-          className="chart-tick"
-          x={x(series[series.length - 1].time)}
-          y={height - 12}
-          textAnchor="middle"
-        >
-          {formatDate(series[series.length - 1].label)}
-        </text>
-        <path className="chart-line" d={path} />
-        {series.map((point) => (
-          <circle
-            key={point.label}
-            className={`chart-dot rating-${rateValue(metricId, point.value)}`}
-            cx={x(point.time)}
-            cy={y(point.value)}
-            r="3.5"
-          />
-        ))}
-      </svg>
-    </figure>
   )
 }

@@ -1,12 +1,33 @@
-import { useMemo, useState } from 'react'
-import type { MetricId, MetricRun, PageTarget } from '../lib/types'
+﻿import { useCallback, useMemo, useState } from 'react'
 import {
-  formatDateTime,
-  formatMetricValue,
-  getMetric,
-  rateValue,
-} from '../lib/metrics'
-import { metricSeries, timeAxisTicks } from '../lib/series'
+  Area,
+  ComposedChart,
+  Line,
+  ReferenceLine,
+  ResponsiveContainer,
+  Scatter,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
+import {
+  ChartShell,
+  ChartTooltipCard,
+  RatingDot,
+  ThresholdBands,
+} from './ChartChrome'
+import {
+  SERIES_COLORS,
+  chartAxisTick,
+  chartCursor,
+  formatValueDelta,
+  metricYDomain,
+  prefersReducedMotion,
+  tooltipWrapperStyle,
+} from '../lib/chart'
+import { formatDateTime, formatMetricValue, getMetric, rateValue } from '../lib/metrics'
+import { formatAxisTime, metricSeries } from '../lib/series'
+import type { MetricId, MetricRun, PageId, PageTarget } from '../lib/types'
 
 type MetricChartProps = {
   runs: MetricRun[]
@@ -17,185 +38,309 @@ type MetricChartProps = {
   rangeLabel: string
 }
 
-const WIDTH = 960
-const HEIGHT = 340
-const PAD = { top: 24, right: 18, bottom: 42, left: 78 }
+type ChartRow = {
+  time: number
+} & Partial<Record<PageId, number>>
 
-function scale(value: number, inMin: number, inMax: number, outMin: number, outMax: number) {
-  if (inMax === inMin) return (outMin + outMax) / 2
-  return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin)
+type ErrorPoint = {
+  time: number
+  marker: number
+  pageId: PageId
+  measuredAt: string
+  error: string | null
+}
+
+type TooltipEntry = {
+  dataKey?: unknown
+  value?: unknown
+  payload?: ChartRow | ErrorPoint
+}
+
+function buildRows(points: ReturnType<typeof metricSeries>): ChartRow[] {
+  const map = new Map<number, ChartRow>()
+  for (const point of points) {
+    const row = map.get(point.time) ?? { time: point.time }
+    row[point.run.pageId] = point.value
+    map.set(point.time, row)
+  }
+  return [...map.values()].sort((a, b) => a.time - b.time)
+}
+
+function previousForPage(rows: ChartRow[], pageId: PageId, time: number) {
+  let previous: number | undefined
+  for (const row of rows) {
+    if (row.time >= time) break
+    const value = row[pageId]
+    if (value != null) previous = value
+  }
+  return previous
+}
+
+function LabTooltip({
+  active,
+  payload,
+  metricId,
+  rows,
+  pages,
+}: {
+  active?: boolean
+  payload?: ReadonlyArray<TooltipEntry>
+  metricId: MetricId
+  rows: ChartRow[]
+  pages: PageTarget[]
+}) {
+  if (!active || !payload || payload.length === 0) return null
+
+  const errorEntry = payload.find((entry) => entry.dataKey === 'marker')
+  if (errorEntry) {
+    const point = errorEntry.payload as ErrorPoint
+    const page = pages.find((item) => item.id === point.pageId)
+    return (
+      <ChartTooltipCard
+        kicker={`${page?.label ?? point.pageId} · chyba měření`}
+        value="neproběhlo"
+        rating="poor"
+        meta={`${formatDateTime(point.measuredAt)}${point.error ? ` · ${point.error}` : ''}`}
+      />
+    )
+  }
+
+  const entry = payload.find((item) => item.dataKey !== 'marker') ?? payload[0]
+  const pageId = entry.dataKey as PageId
+  const value = typeof entry.value === 'number' ? entry.value : Number(entry.value)
+  if (!Number.isFinite(value)) return null
+  const row = entry.payload as ChartRow
+  const page = pages.find((item) => item.id === pageId)
+  return (
+    <ChartTooltipCard
+      kicker={page?.label ?? pageId}
+      value={formatMetricValue(metricId, value)}
+      rating={rateValue(metricId, value)}
+      meta={formatDateTime(new Date(row.time).toISOString())}
+      delta={formatValueDelta(metricId, value, previousForPage(rows, pageId, row.time))}
+    />
+  )
+}
+
+function ErrorTick({ cx, cy }: { cx?: number; cy?: number }) {
+  if (cx == null || cy == null) return null
+  return (
+    <path
+      className="chart-error"
+      d={`M ${cx} ${cy - 1} L ${cx - 4.5} ${cy - 10} L ${cx + 4.5} ${cy - 10} Z`}
+    />
+  )
 }
 
 export function MetricChart({ runs, pages, metricId, from, to, rangeLabel }: MetricChartProps) {
   const metric = getMetric(metricId)
-  const [hoverRunId, setHoverRunId] = useState<string | null>(null)
+  const [hidden, setHidden] = useState<ReadonlySet<PageId>>(() => new Set())
   const points = useMemo(
     () => metricSeries(runs, metricId).filter((point) => point.time >= from && point.time <= to),
     [from, metricId, runs, to],
   )
+  const rows = useMemo(() => buildRows(points), [points])
   const series = useMemo(
     () =>
       pages
         .map((page) => ({
           page,
-          points: points.filter((point) => point.run.pageId === page.id),
+          count: points.filter((point) => point.run.pageId === page.id).length,
         }))
-        .filter((item) => item.points.length > 0),
+        .filter((item) => item.count > 0),
     [pages, points],
   )
-  const errors = runs.filter((run) => {
-    if (run.status !== 'error') return false
-    const time = Date.parse(run.measuredAt)
-    return Number.isFinite(time) && time >= from && time <= to
-  })
-
-  const maxValue = Math.max(
-    metric.higherIsBetter ? 100 : metric.poor * 1.25,
-    ...points.map((point) => point.value),
+  const visibleSeries = series.filter((item) => !hidden.has(item.page.id))
+  const plotted = visibleSeries.length > 0 ? visibleSeries : series
+  const errors = useMemo<ErrorPoint[]>(
+    () =>
+      runs.flatMap((run) => {
+        if (run.status !== 'error') return []
+        const time = Date.parse(run.measuredAt)
+        if (!Number.isFinite(time) || time < from || time > to) return []
+        return [
+          {
+            time,
+            marker: 0,
+            pageId: run.pageId,
+            measuredAt: run.measuredAt,
+            error: run.error,
+          },
+        ]
+      }),
+    [from, runs, to],
   )
-  const minValue = metric.higherIsBetter ? 0 : 0
-  const innerW = WIDTH - PAD.left - PAD.right
-  const innerH = HEIGHT - PAD.top - PAD.bottom
 
-  const x = (time: number) => scale(time, from, to, PAD.left, WIDTH - PAD.right)
-  const y = (value: number) => scale(value, minValue, maxValue, HEIGHT - PAD.bottom, PAD.top)
+  const plottedIds = new Set(plotted.map((item) => item.page.id))
+  const [yMin, yMax] = metricYDomain(
+    metric,
+    points.filter((point) => plottedIds.has(point.run.pageId)).map((point) => point.value),
+  )
+  const showDots = plotted.length === 1 && rows.length <= 56
+  const filled = plotted.length === 1
+  const animate = !prefersReducedMotion()
 
-  const goodY = y(metric.good)
-  const poorY = y(metric.poor)
-  const hover = hoverRunId ? points.find((point) => point.run.id === hoverRunId) : null
-  const hoverPage = hover ? pages.find((page) => page.id === hover.run.pageId) : null
+  const renderDot = useCallback(
+    (props: { cx?: number; cy?: number; value?: unknown; payload?: Record<string, unknown>; dataKey?: unknown }) => (
+      <RatingDot
+        cx={props.cx}
+        cy={props.cy}
+        value={props.value}
+        payload={props.payload}
+        dataKey={props.dataKey}
+        metricId={metricId}
+      />
+    ),
+    [metricId],
+  )
+  const renderActiveDot = useCallback(
+    (props: { cx?: number; cy?: number; value?: unknown; payload?: Record<string, unknown>; dataKey?: unknown }) => (
+      <RatingDot
+        cx={props.cx}
+        cy={props.cy}
+        value={props.value}
+        payload={props.payload}
+        dataKey={props.dataKey}
+        metricId={metricId}
+        r={6}
+      />
+    ),
+    [metricId],
+  )
 
-  const ticks = 4
-  const yTicks = Array.from({ length: ticks + 1 }, (_, index) => {
-    const value = minValue + ((maxValue - minValue) * index) / ticks
-    return { value, pos: y(value) }
-  })
-
-  const xTicks = timeAxisTicks(from, to)
+  function togglePage(pageId: PageId) {
+    setHidden((current) => {
+      const next = new Set(current)
+      if (next.has(pageId)) next.delete(pageId)
+      else next.add(pageId)
+      return next
+    })
+  }
 
   return (
-    <figure className="chart">
-      <figcaption>
-        <strong>{metric.label}</strong>
-        <span>
-          {metric.description} {rangeLabel}.
-        </span>
-      </figcaption>
-      {points.length === 0 ? (
-        <div className="chart-empty">
-          V tomto výřezu zatím nejsou úspěšné hodnoty. Graf se doplní po prvním Lighthouse běhu.
-        </div>
-      ) : (
-        <>
-          {series.length > 1 && (
-            <div className="chart-legend" aria-label="Legenda měřených URL">
-              {series.map(({ page }) => (
-                <span key={page.id} className={`series-${page.id}`}>
-                  <i aria-hidden="true" />
-                  {page.label}
-                </span>
-              ))}
-            </div>
-          )}
-          <svg
-            viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-            role="img"
-            aria-label={`${metric.label} · ${rangeLabel}`}
-            onMouseLeave={() => setHoverRunId(null)}
-          >
-          <rect className="chart-paper" x="0" y="0" width={WIDTH} height={HEIGHT} />
-          {Array.from({ length: 9 }, (_, index) => (
-            <line
-              key={index}
-              className="chart-rule"
-              x1={PAD.left}
-              x2={WIDTH - PAD.right}
-              y1={PAD.top + (innerH * index) / 8}
-              y2={PAD.top + (innerH * index) / 8}
+    <ChartShell
+      title={metric.label}
+      description={`${metric.description} ${rangeLabel}.`}
+      empty={
+        points.length === 0
+          ? 'V tomto výřezu zatím nejsou úspěšné hodnoty. Graf se doplní po prvním Lighthouse běhu.'
+          : null
+      }
+      legend={
+        series.length > 1 ? (
+          <div className="chart-legend" aria-label="Legenda měřených URL">
+            {series.map(({ page }) => (
+              <button
+                key={page.id}
+                type="button"
+                className={`series-${page.id}${hidden.has(page.id) ? ' is-off' : ''}`}
+                aria-pressed={!hidden.has(page.id)}
+                onClick={() => togglePage(page.id)}
+              >
+                <i aria-hidden="true" />
+                {page.label}
+              </button>
+            ))}
+          </div>
+        ) : null
+      }
+    >
+      <ResponsiveContainer width="100%" height="100%">
+        <ComposedChart data={rows} margin={{ top: 12, right: 28, bottom: 8, left: 4 }} accessibilityLayer>
+          <defs>
+            {plotted.map(({ page }) => (
+              <linearGradient key={page.id} id={`lab-fill-${page.id}`} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor={SERIES_COLORS[page.id]} stopOpacity={0.32} />
+                <stop offset="100%" stopColor={SERIES_COLORS[page.id]} stopOpacity={0.02} />
+              </linearGradient>
+            ))}
+          </defs>
+          <XAxis
+            dataKey="time"
+            type="number"
+            domain={[from, to]}
+            tickFormatter={(time: number) => formatAxisTime(time, from, to)}
+            tick={chartAxisTick}
+            tickLine={false}
+            minTickGap={28}
+            stroke="var(--ink)"
+            axisLine={{ stroke: 'var(--ink)' }}
+          />
+          <YAxis
+            type="number"
+            domain={[yMin, yMax]}
+            tickFormatter={(value: number) => formatMetricValue(metricId, value)}
+            tick={chartAxisTick}
+            tickLine={false}
+            width={72}
+            stroke="var(--ink)"
+            axisLine={{ stroke: 'var(--ink)' }}
+          />
+          <ThresholdBands metric={metric} yMax={yMax} />
+          {errors.map((point) => (
+            <ReferenceLine
+              key={`${point.pageId}-${point.time}`}
+              x={point.time}
+              stroke="var(--poor)"
+              strokeDasharray="2 4"
+              strokeOpacity={0.28}
             />
           ))}
-          {metric.higherIsBetter ? (
-            <>
-              <rect className="band-good" x={PAD.left} y={PAD.top} width={innerW} height={Math.max(goodY - PAD.top, 0)} />
-              <rect className="band-ok" x={PAD.left} y={goodY} width={innerW} height={Math.max(poorY - goodY, 0)} />
-              <rect className="band-poor" x={PAD.left} y={poorY} width={innerW} height={Math.max(HEIGHT - PAD.bottom - poorY, 0)} />
-            </>
-          ) : (
-            <>
-              <rect className="band-good" x={PAD.left} y={goodY} width={innerW} height={Math.max(HEIGHT - PAD.bottom - goodY, 0)} />
-              <rect className="band-ok" x={PAD.left} y={poorY} width={innerW} height={Math.max(goodY - poorY, 0)} />
-              <rect className="band-poor" x={PAD.left} y={PAD.top} width={innerW} height={Math.max(poorY - PAD.top, 0)} />
-            </>
-          )}
-          {yTicks.map((tick) => (
-            <text key={tick.value} className="chart-tick" x={PAD.left - 8} y={tick.pos + 4} textAnchor="end">
-              {formatMetricValue(metricId, tick.value)}
-            </text>
-          ))}
-          {xTicks.map((tick) => (
-            <text key={tick.time} className="chart-tick" x={x(tick.time)} y={HEIGHT - 14} textAnchor="middle">
-              {tick.label}
-            </text>
-          ))}
-          {series.map(({ page, points: seriesPoints }) => {
-            const path = seriesPoints
-              .map((point, index) => `${index === 0 ? 'M' : 'L'} ${x(point.time)} ${y(point.value)}`)
-              .join(' ')
-            return path ? (
-              <path key={page.id} className={`chart-line series-${page.id}`} d={path} />
-            ) : null
-          })}
-          {points.map((point) => (
-            <circle
-              key={point.run.id}
-              className={`chart-dot series-${point.run.pageId} rating-${rateValue(metricId, point.value)}`}
-              cx={x(point.time)}
-              cy={y(point.value)}
-              r={hoverRunId === point.run.id ? 6 : 3.5}
-              onMouseEnter={() => setHoverRunId(point.run.id)}
-            />
-          ))}
-          {errors.map((run) => {
-            const time = Date.parse(run.measuredAt)
-            if (!Number.isFinite(time)) return null
-            return (
-              <line
-                key={run.id}
-                className="chart-error"
-                x1={x(time)}
-                x2={x(time)}
-                y1={HEIGHT - PAD.bottom}
-                y2={HEIGHT - PAD.bottom + 8}
+          {plotted.map(({ page }) => {
+            const color = SERIES_COLORS[page.id]
+            const shared = {
+              dataKey: page.id,
+              name: page.label,
+              type: 'monotone' as const,
+              stroke: color,
+              strokeWidth: 2.4,
+              connectNulls: true,
+              isAnimationActive: animate,
+              animationDuration: 450,
+              dot: showDots ? renderDot : false,
+              activeDot: renderActiveDot,
+            }
+            return filled ? (
+              <Area
+                key={page.id}
+                {...shared}
+                fill={`url(#lab-fill-${page.id})`}
+                fillOpacity={1}
+                strokeLinejoin="round"
+                strokeLinecap="round"
               />
+            ) : (
+              <Line key={page.id} {...shared} dot={showDots ? renderDot : false} strokeLinejoin="round" />
             )
           })}
-          {hover && (
-            <g className="chart-tooltip">
-              <line
-                x1={x(hover.time)}
-                x2={x(hover.time)}
-                y1={PAD.top}
-                y2={HEIGHT - PAD.bottom}
-              />
-              <rect
-                x={Math.min(x(hover.time) + 10, WIDTH - 280)}
-                y={Math.max(y(hover.value) - 46, 8)}
-                width="266"
-                height="40"
-                rx="2"
-              />
-              <text
-                x={Math.min(x(hover.time) + 20, WIDTH - 270)}
-                y={Math.max(y(hover.value) - 22, 32)}
-              >
-                {series.length > 1 ? `${hoverPage?.label ?? hover.run.pageId} · ` : ''}
-                {formatDateTime(hover.run.measuredAt)} · {formatMetricValue(metricId, hover.value)}
-              </text>
-            </g>
+          {errors.length > 0 && (
+            <Scatter
+              data={errors}
+              dataKey="marker"
+              name="Chyba měření"
+              fill="var(--poor)"
+              isAnimationActive={false}
+              shape={ErrorTick}
+              legendType="none"
+            />
           )}
-          </svg>
-        </>
-      )}
-    </figure>
+          <Tooltip
+            shared={false}
+            cursor={chartCursor}
+            wrapperStyle={tooltipWrapperStyle}
+            isAnimationActive={false}
+            content={(props) => (
+              <LabTooltip
+                active={props.active}
+                payload={props.payload}
+                metricId={metricId}
+                rows={rows}
+                pages={pages}
+              />
+            )}
+          />
+        </ComposedChart>
+      </ResponsiveContainer>
+    </ChartShell>
   )
 }

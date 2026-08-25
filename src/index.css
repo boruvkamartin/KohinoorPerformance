@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500;12..96,75..100,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500;12..96,75..100,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
 :root {
   --paper: #e7dcc3;
@@ -149,7 +149,8 @@ h1 {
 .refresh:focus-visible,
 .pan:focus-visible,
 .segment button:focus-visible,
-.metric-row button:focus-visible {
+.metric-row button:focus-visible,
+.chart-legend button:focus-visible {
   outline: 3px solid var(--pencil);
   outline-offset: 3px;
 }
@@ -302,10 +303,21 @@ legend {
   font-size: 12px;
 }
 
-.chart-legend span {
+.chart-legend button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.chart-legend button.is-off {
+  opacity: 0.38;
 }
 
 .chart-legend i {
@@ -331,7 +343,7 @@ legend {
 }
 
 .chart-empty,
-.chart svg {
+.chart-frame {
   width: 100%;
   background: repeating-linear-gradient(
     to bottom,
@@ -350,39 +362,17 @@ legend {
   text-align: center;
 }
 
-.chart-paper {
-  fill: rgba(243, 234, 212, 0.35);
+.chart-frame {
+  height: 360px;
 }
 
-.chart-rule {
-  stroke: rgba(203, 191, 164, 0.55);
-  stroke-width: 1;
+.chart-frame.is-field {
+  height: 280px;
 }
 
-.band-good {
-  fill: color-mix(in srgb, var(--good) 10%, transparent);
-}
-
-.band-ok {
-  fill: color-mix(in srgb, var(--needs-improvement) 10%, transparent);
-}
-
-.band-poor {
-  fill: color-mix(in srgb, var(--poor) 12%, transparent);
-}
-
-.chart-tick {
-  fill: var(--muted);
-  font-family: var(--mono);
-  font-size: 11px;
-}
-
-.chart-line {
-  fill: none;
-  stroke: var(--series-color, var(--prussian));
-  stroke-width: 2.4;
-  stroke-linejoin: round;
-  stroke-linecap: round;
+.chart-frame .recharts-wrapper,
+.chart-frame .recharts-surface {
+  cursor: crosshair;
 }
 
 .chart-dot {
@@ -404,23 +394,113 @@ legend {
 }
 
 .chart-error {
-  stroke: var(--poor);
-  stroke-width: 2;
+  fill: var(--poor);
 }
 
-.chart-tooltip line {
-  stroke: var(--pencil);
-  stroke-dasharray: 3 3;
+.chart-tip {
+  min-width: 188px;
+  max-width: 280px;
+  padding: 10px 12px 11px;
+  background: var(--ink);
+  color: var(--paper-2);
+  box-shadow: 4px 4px 0 var(--pencil);
+  pointer-events: none;
 }
 
-.chart-tooltip rect {
-  fill: var(--ink);
+.chart-tip.rating-good {
+  box-shadow: 4px 4px 0 var(--good);
 }
 
-.chart-tooltip text {
-  fill: var(--paper-2);
+.chart-tip.rating-needs-improvement {
+  box-shadow: 4px 4px 0 var(--needs-improvement);
+}
+
+.chart-tip.rating-poor {
+  box-shadow: 4px 4px 0 var(--poor);
+}
+
+.chart-tip-kicker,
+.chart-tip-meta,
+.chart-tip-delta,
+.chart-tip-rating {
+  margin: 0;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.chart-tip-kicker {
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper-2) 72%, transparent);
+}
+
+.chart-tip-value {
+  margin: 4px 0 2px;
+  font-family: var(--display);
+  font-size: 1.55rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.chart-tip-rating {
+  text-transform: uppercase;
+}
+
+.chart-tip-rating.rating-good {
+  color: #7dcca8;
+}
+
+.chart-tip-rating.rating-needs-improvement {
+  color: #e2b15a;
+}
+
+.chart-tip-rating.rating-poor {
+  color: #e08a82;
+}
+
+.chart-tip-meta,
+.chart-tip-delta {
+  margin-top: 6px;
+  color: color-mix(in srgb, var(--paper-2) 78%, transparent);
+  white-space: normal;
+}
+
+.chart-bands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.chart-bands span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-bands i {
+  width: 10px;
+  height: 10px;
+}
+
+.band-key-good {
+  background: color-mix(in srgb, var(--good) 55%, var(--paper-2));
+}
+
+.band-key-ok {
+  background: color-mix(in srgb, var(--needs-improvement) 55%, var(--paper-2));
+}
+
+.band-key-poor {
+  background: color-mix(in srgb, var(--poor) 55%, var(--paper-2));
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
 }
 
 .field {
@@ -578,6 +658,14 @@ td.rating-poor {
   .status-line,
   .field-cards {
     grid-template-columns: 1fr;
+  }
+
+  .chart-frame {
+    height: 260px;
+  }
+
+  .chart-frame.is-field {
+    height: 220px;
   }
 }
 

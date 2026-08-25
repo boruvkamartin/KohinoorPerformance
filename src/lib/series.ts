@@ -1,4 +1,4 @@
-import type { MetricId, MetricRun, PageId, Profile } from './types'
+﻿import type { MetricId, MetricRun, PageId, Profile } from './types'
 import { DAY_MS } from './metrics'
 
 export const RANGE_DAYS = [1, 2, 3, 7] as const
@@ -38,38 +38,21 @@ export function fitTimeWindow(runs: MetricRun[], requestedFrom: number, requeste
   }
 }
 
-export function timeAxisTicks(from: number, to: number) {
+export function formatAxisTime(time: number, from: number, to: number) {
   const span = Math.max(to - from, 1)
   const hour = 60 * 60 * 1000
-  let step = DAY_MS
-  let label: (time: number) => string = (time) =>
-    new Date(time).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'numeric' })
-
   if (span <= 8 * hour) {
-    step = span <= 2 * hour ? 15 * 60 * 1000 : 30 * 60 * 1000
-    label = (time) =>
-      new Date(time).toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' })
-  } else if (span <= 2 * DAY_MS) {
-    step = 3 * hour
-    label = (time) =>
-      new Date(time).toLocaleString('cs-CZ', {
-        day: 'numeric',
-        month: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-      })
+    return new Date(time).toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' })
   }
-
-  const start = Math.ceil(from / step) * step
-  const ticks: { time: number; label: string }[] = []
-  for (let time = start; time <= to; time += step) {
-    ticks.push({ time, label: label(time) })
+  if (span <= 2 * DAY_MS) {
+    return new Date(time).toLocaleString('cs-CZ', {
+      day: 'numeric',
+      month: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
   }
-  if (ticks.length > 8) {
-    const stride = Math.ceil(ticks.length / 8)
-    return ticks.filter((_, index) => index % stride === 0)
-  }
-  return ticks
+  return new Date(time).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'numeric' })
 }
 
 export function runsInWindow(runs: MetricRun[], from: number, to: number) {
