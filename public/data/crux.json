@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-25T05:50:08.381Z",
+  "generatedAt": "2026-08-26T05:52:42.037Z",
   "origin": "https://eshop.koh-i-noor.cz",
   "records": [
     {
@@ -11,39 +11,39 @@
       "status": "ok",
       "error": null,
       "collectionPeriod": {
-        "firstDate": "2026-07-27",
-        "lastDate": "2026-08-23"
+        "firstDate": "2026-07-28",
+        "lastDate": "2026-08-24"
       },
       "metrics": {
         "lcp": {
-          "p75": 1332,
-          "good": 0.9375,
-          "ni": 0.0442,
-          "poor": 0.0183
+          "p75": 1327,
+          "good": 0.9384,
+          "ni": 0.0425,
+          "poor": 0.0191
         },
         "inp": {
           "p75": 206,
-          "good": 0.7386,
-          "ni": 0.2338,
-          "poor": 0.0275
+          "good": 0.7381,
+          "ni": 0.2347,
+          "poor": 0.0272
         },
         "cls": {
           "p75": 0,
-          "good": 0.941,
-          "ni": 0.0319,
-          "poor": 0.0271
+          "good": 0.9411,
+          "ni": 0.0316,
+          "poor": 0.0274
         },
         "fcp": {
-          "p75": 982,
-          "good": 0.9363,
-          "ni": 0.0445,
-          "poor": 0.0192
+          "p75": 979,
+          "good": 0.9364,
+          "ni": 0.0436,
+          "poor": 0.0201
         },
         "ttfb": {
-          "p75": 722,
-          "good": 0.8128,
-          "ni": 0.1667,
-          "poor": 0.0205
+          "p75": 721,
+          "good": 0.8132,
+          "ni": 0.1654,
+          "poor": 0.0214
         }
       }
     },
@@ -55,39 +55,39 @@
       "status": "ok",
       "error": null,
       "collectionPeriod": {
-        "firstDate": "2026-07-27",
-        "lastDate": "2026-08-23"
+        "firstDate": "2026-07-28",
+        "lastDate": "2026-08-24"
       },
       "metrics": {
         "lcp": {
-          "p75": 1181,
-          "good": 0.9439,
-          "ni": 0.0328,
-          "poor": 0.0233
+          "p75": 1176,
+          "good": 0.945,
+          "ni": 0.0307,
+          "poor": 0.0243
         },
         "inp": {
-          "p75": 76,
-          "good": 0.9585,
-          "ni": 0.0351,
+          "p75": 75,
+          "good": 0.9608,
+          "ni": 0.0328,
           "poor": 0.0064
         },
         "cls": {
           "p75": 0.09,
-          "good": 0.7808,
-          "ni": 0.1622,
-          "poor": 0.0571
+          "good": 0.7822,
+          "ni": 0.162,
+          "poor": 0.0558
         },
         "fcp": {
-          "p75": 846,
-          "good": 0.9651,
-          "ni": 0.0243,
-          "poor": 0.0106
+          "p75": 841,
+          "good": 0.9605,
+          "ni": 0.0295,
+          "poor": 0.01
         },
         "ttfb": {
-          "p75": 620,
-          "good": 0.89,
-          "ni": 0.095,
-          "poor": 0.0149
+          "p75": 615,
+          "good": 0.8915,
+          "ni": 0.0926,
+          "poor": 0.0158
         }
       }
     },
@@ -99,39 +99,39 @@
       "status": "ok",
       "error": null,
       "collectionPeriod": {
-        "firstDate": "2026-07-27",
-        "lastDate": "2026-08-23"
+        "firstDate": "2026-07-28",
+        "lastDate": "2026-08-24"
       },
       "metrics": {
         "lcp": {
-          "p75": 1308,
-          "good": 0.9374,
-          "ni": 0.0425,
-          "poor": 0.0201
+          "p75": 1302,
+          "good": 0.9391,
+          "ni": 0.0407,
+          "poor": 0.0202
         },
         "inp": {
           "p75": 178,
-          "good": 0.7854,
-          "ni": 0.1907,
-          "poor": 0.0239
+          "good": 0.7853,
+          "ni": 0.191,
+          "poor": 0.0237
         },
         "cls": {
-          "p75": 0.01,
-          "good": 0.9103,
-          "ni": 0.0568,
+          "p75": 0,
+          "good": 0.9104,
+          "ni": 0.0567,
           "poor": 0.0329
         },
         "fcp": {
-          "p75": 958,
-          "good": 0.9415,
+          "p75": 955,
+          "good": 0.9408,
           "ni": 0.0414,
-          "poor": 0.0171
+          "poor": 0.0178
         },
         "ttfb": {
-          "p75": 702,
-          "good": 0.8278,
-          "ni": 0.1527,
-          "poor": 0.0195
+          "p75": 701,
+          "good": 0.8287,
+          "ni": 0.1511,
+          "poor": 0.0202
         }
       }
     },
@@ -143,39 +143,39 @@
       "status": "ok",
       "error": null,
       "collectionPeriod": {
-        "firstDate": "2026-07-27",
-        "lastDate": "2026-08-23"
+        "firstDate": "2026-07-28",
+        "lastDate": "2026-08-24"
       },
       "metrics": {
         "lcp": {
-          "p75": 1726,
-          "good": 0.8785,
-          "ni": 0.0813,
-          "poor": 0.0402
+          "p75": 1709,
+          "good": 0.883,
+          "ni": 0.079,
+          "poor": 0.038
         },
         "inp": {
-          "p75": 281,
-          "good": 0.5811,
-          "ni": 0.3699,
-          "poor": 0.049
+          "p75": 276,
+          "good": 0.5926,
+          "ni": 0.3618,
+          "poor": 0.0456
         },
         "cls": {
           "p75": 0.01,
-          "good": 0.8045,
-          "ni": 0.1928,
-          "poor": 0.0027
+          "good": 0.804,
+          "ni": 0.1927,
+          "poor": 0.0033
         },
         "fcp": {
-          "p75": 1466,
-          "good": 0.8369,
-          "ni": 0.1102,
-          "poor": 0.0529
+          "p75": 1453,
+          "good": 0.8397,
+          "ni": 0.1095,
+          "poor": 0.0508
         },
         "ttfb": {
-          "p75": 979,
-          "good": 0.5796,
-          "ni": 0.3533,
-          "poor": 0.0671
+          "p75": 974,
+          "good": 0.5846,
+          "ni": 0.3513,
+          "poor": 0.0641
         }
       }
     },
@@ -187,234 +187,234 @@
       "status": "ok",
       "error": null,
       "collectionPeriod": {
-        "firstDate": "2026-07-27",
-        "lastDate": "2026-08-23"
+        "firstDate": "2026-07-28",
+        "lastDate": "2026-08-24"
       },
       "metrics": {
         "lcp": {
           "p75": 1330,
-          "good": 0.9281,
-          "ni": 0.0441,
-          "poor": 0.0278
+          "good": 0.92,
+          "ni": 0.0517,
+          "poor": 0.0282
         },
         "inp": {
-          "p75": 110,
-          "good": 0.921,
-          "ni": 0.0715,
+          "p75": 109,
+          "good": 0.9222,
+          "ni": 0.0702,
           "poor": 0.0075
         },
         "cls": {
           "p75": 0.1,
-          "good": 0.7424,
-          "ni": 0.2532,
-          "poor": 0.0044
-        },
-        "fcp": {
-          "p75": 1179,
-          "good": 0.8982,
-          "ni": 0.0657,
-          "poor": 0.0362
-        },
-        "ttfb": {
-          "p75": 749,
-          "good": 0.7919,
-          "ni": 0.1562,
-          "poor": 0.0519
-        }
-      }
-    },
-    {
-      "pageId": "category",
-      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
-      "scope": "url",
-      "formFactor": "PHONE",
-      "status": "ok",
-      "error": null,
-      "collectionPeriod": {
-        "firstDate": "2026-07-27",
-        "lastDate": "2026-08-23"
-      },
-      "metrics": {
-        "lcp": {
-          "p75": 1801,
-          "good": 0.8923,
-          "ni": 0.0799,
-          "poor": 0.0278
-        },
-        "inp": {
-          "p75": 180,
-          "good": 0.7966,
-          "ni": 0.1869,
-          "poor": 0.0164
-        },
-        "cls": {
-          "p75": 0,
-          "good": 0.9847,
-          "ni": 0.0034,
-          "poor": 0.0119
-        },
-        "fcp": {
-          "p75": 1375,
-          "good": 0.8902,
-          "ni": 0.0852,
-          "poor": 0.0246
-        },
-        "ttfb": {
-          "p75": 1076,
-          "good": 0.3941,
-          "ni": 0.5701,
-          "poor": 0.0358
-        }
-      }
-    },
-    {
-      "pageId": "category",
-      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
-      "scope": "url",
-      "formFactor": "DESKTOP",
-      "status": "ok",
-      "error": null,
-      "collectionPeriod": {
-        "firstDate": "2026-07-27",
-        "lastDate": "2026-08-23"
-      },
-      "metrics": {
-        "lcp": {
-          "p75": 1421,
-          "good": 0.9487,
-          "ni": 0.0274,
-          "poor": 0.024
-        },
-        "inp": {
-          "p75": 78,
-          "good": 0.963,
-          "ni": 0.0254,
-          "poor": 0.0115
-        },
-        "cls": {
-          "p75": 0.02,
-          "good": 0.8596,
-          "ni": 0.0491,
-          "poor": 0.0912
-        },
-        "fcp": {
-          "p75": 1161,
-          "good": 0.9322,
-          "ni": 0.051,
-          "poor": 0.0168
-        },
-        "ttfb": {
-          "p75": 944,
-          "good": 0.4921,
-          "ni": 0.4792,
-          "poor": 0.0287
-        }
-      }
-    },
-    {
-      "pageId": "product",
-      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
-      "scope": "url",
-      "formFactor": "PHONE",
-      "status": "insufficient-data",
-      "error": "chrome ux report data not found",
-      "collectionPeriod": null,
-      "metrics": null
-    },
-    {
-      "pageId": "product",
-      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
-      "scope": "url",
-      "formFactor": "DESKTOP",
-      "status": "insufficient-data",
-      "error": "chrome ux report data not found",
-      "collectionPeriod": null,
-      "metrics": null
-    },
-    {
-      "pageId": "basket",
-      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
-      "scope": "url",
-      "formFactor": "PHONE",
-      "status": "ok",
-      "error": null,
-      "collectionPeriod": {
-        "firstDate": "2026-07-27",
-        "lastDate": "2026-08-23"
-      },
-      "metrics": {
-        "lcp": {
-          "p75": 883,
-          "good": 0.9814,
-          "ni": 0.0155,
-          "poor": 0.0032
-        },
-        "inp": {
-          "p75": 119,
-          "good": 0.9244,
-          "ni": 0.0709,
-          "poor": 0.0047
-        },
-        "cls": {
-          "p75": 0,
-          "good": 0.9957,
-          "ni": 0.0022,
-          "poor": 0.002
-        },
-        "fcp": {
-          "p75": 711,
-          "good": 0.9805,
-          "ni": 0.0102,
-          "poor": 0.0093
-        },
-        "ttfb": {
-          "p75": 439,
-          "good": 0.957,
-          "ni": 0.0377,
-          "poor": 0.0052
-        }
-      }
-    },
-    {
-      "pageId": "basket",
-      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
-      "scope": "url",
-      "formFactor": "DESKTOP",
-      "status": "ok",
-      "error": null,
-      "collectionPeriod": {
-        "firstDate": "2026-07-27",
-        "lastDate": "2026-08-23"
-      },
-      "metrics": {
-        "lcp": {
-          "p75": 716,
-          "good": 0.9812,
-          "ni": 0.0047,
-          "poor": 0.0141
-        },
-        "inp": {
-          "p75": 46,
-          "good": 0.9834,
-          "ni": 0.0119,
-          "poor": 0.0047
-        },
-        "cls": {
-          "p75": 0,
-          "good": 0.9955,
-          "ni": 0,
+          "good": 0.7438,
+          "ni": 0.2517,
           "poor": 0.0045
         },
         "fcp": {
-          "p75": 602,
-          "good": 0.9793,
-          "ni": 0.0091,
-          "poor": 0.0117
+          "p75": 1181,
+          "good": 0.8995,
+          "ni": 0.0668,
+          "poor": 0.0337
         },
         "ttfb": {
-          "p75": 379,
-          "good": 0.9784,
-          "ni": 0.0216,
+          "p75": 742,
+          "good": 0.7929,
+          "ni": 0.1544,
+          "poor": 0.0527
+        }
+      }
+    },
+    {
+      "pageId": "category",
+      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
+      "scope": "url",
+      "formFactor": "PHONE",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-28",
+        "lastDate": "2026-08-24"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 1810,
+          "good": 0.8939,
+          "ni": 0.08,
+          "poor": 0.0262
+        },
+        "inp": {
+          "p75": 178,
+          "good": 0.7953,
+          "ni": 0.1855,
+          "poor": 0.0193
+        },
+        "cls": {
+          "p75": 0,
+          "good": 0.9827,
+          "ni": 0.0046,
+          "poor": 0.0127
+        },
+        "fcp": {
+          "p75": 1370,
+          "good": 0.8894,
+          "ni": 0.0856,
+          "poor": 0.025
+        },
+        "ttfb": {
+          "p75": 1077,
+          "good": 0.399,
+          "ni": 0.5656,
+          "poor": 0.0354
+        }
+      }
+    },
+    {
+      "pageId": "category",
+      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
+      "scope": "url",
+      "formFactor": "DESKTOP",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-28",
+        "lastDate": "2026-08-24"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 1407,
+          "good": 0.9459,
+          "ni": 0.0263,
+          "poor": 0.0278
+        },
+        "inp": {
+          "p75": 69,
+          "good": 0.9675,
+          "ni": 0.0184,
+          "poor": 0.0141
+        },
+        "cls": {
+          "p75": 0.01,
+          "good": 0.8712,
+          "ni": 0.0455,
+          "poor": 0.0833
+        },
+        "fcp": {
+          "p75": 1150,
+          "good": 0.9378,
+          "ni": 0.0463,
+          "poor": 0.0159
+        },
+        "ttfb": {
+          "p75": 910,
+          "good": 0.5155,
+          "ni": 0.4564,
+          "poor": 0.0281
+        }
+      }
+    },
+    {
+      "pageId": "product",
+      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
+      "scope": "url",
+      "formFactor": "PHONE",
+      "status": "insufficient-data",
+      "error": "chrome ux report data not found",
+      "collectionPeriod": null,
+      "metrics": null
+    },
+    {
+      "pageId": "product",
+      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
+      "scope": "url",
+      "formFactor": "DESKTOP",
+      "status": "insufficient-data",
+      "error": "chrome ux report data not found",
+      "collectionPeriod": null,
+      "metrics": null
+    },
+    {
+      "pageId": "basket",
+      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
+      "scope": "url",
+      "formFactor": "PHONE",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-28",
+        "lastDate": "2026-08-24"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 889,
+          "good": 0.9804,
+          "ni": 0.0161,
+          "poor": 0.0035
+        },
+        "inp": {
+          "p75": 120,
+          "good": 0.9238,
+          "ni": 0.0726,
+          "poor": 0.0036
+        },
+        "cls": {
+          "p75": 0,
+          "good": 0.9961,
+          "ni": 0.0021,
+          "poor": 0.0018
+        },
+        "fcp": {
+          "p75": 713,
+          "good": 0.9782,
+          "ni": 0.01,
+          "poor": 0.0118
+        },
+        "ttfb": {
+          "p75": 437,
+          "good": 0.9564,
+          "ni": 0.0387,
+          "poor": 0.0049
+        }
+      }
+    },
+    {
+      "pageId": "basket",
+      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
+      "scope": "url",
+      "formFactor": "DESKTOP",
+      "status": "ok",
+      "error": null,
+      "collectionPeriod": {
+        "firstDate": "2026-07-28",
+        "lastDate": "2026-08-24"
+      },
+      "metrics": {
+        "lcp": {
+          "p75": 700,
+          "good": 0.9772,
+          "ni": 0.0047,
+          "poor": 0.0181
+        },
+        "inp": {
+          "p75": 46,
+          "good": 0.9825,
+          "ni": 0.0113,
+          "poor": 0.0062
+        },
+        "cls": {
+          "p75": 0,
+          "good": 0.9954,
+          "ni": 0,
+          "poor": 0.0046
+        },
+        "fcp": {
+          "p75": 580,
+          "good": 0.9882,
+          "ni": 0.0072,
+          "poor": 0.0046
+        },
+        "ttfb": {
+          "p75": 378,
+          "good": 0.9859,
+          "ni": 0.0141,
           "poor": 0
         }
       }
