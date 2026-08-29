@@ -1,5 +1,22 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-25T04:21:44.638Z",
-  "open": {}
+  "updatedAt": "2026-08-29T03:42:09.358Z",
+  "open": {
+    "basket|mobile|lcp": {
+      "kind": "metric",
+      "pageId": "basket",
+      "profile": "mobile",
+      "metricId": "lcp",
+      "value": 11289.243999999999,
+      "limit": 10932.286875,
+      "unit": "ms",
+      "label": "LCP",
+      "reason": "jump",
+      "streak": 2,
+      "error": null,
+      "key": "basket|mobile|lcp",
+      "pageLabel": "Košík",
+      "openedAt": "2026-08-29T03:42:09.358Z"
+    }
+  }
 }
