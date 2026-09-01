@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-01T20:12:15.703Z",
+  "generatedAt": "2026-09-01T22:34:40.067Z",
   "pages": [
     {
       "id": "homepage",
@@ -24,438 +24,6 @@
     }
   ],
   "runs": [
-    {
-      "id": "2026-08-24T20:40:23.381Z|homepage|mobile",
-      "measuredAt": "2026-08-24T20:40:23.381Z",
-      "pageId": "homepage",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 31,
-        "fcp": 5051.719199999999,
-        "lcp": 6333.4235,
-        "si": 7480.033565883112,
-        "tbt": 1041,
-        "cls": 0.17214818844417396,
-        "ttfb": 516.7999999999998
-      }
-    },
-    {
-      "id": "2026-08-24T20:40:46.420Z|homepage|desktop",
-      "measuredAt": "2026-08-24T20:40:46.420Z",
-      "pageId": "homepage",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 69,
-        "fcp": 1946.4347999999998,
-        "lcp": 2511.6964,
-        "si": 3148.380098228873,
-        "tbt": 20.5,
-        "cls": 0.10007285172461032,
-        "ttfb": 622.0009999999999
-      }
-    },
-    {
-      "id": "2026-08-24T20:41:06.685Z|category|mobile",
-      "measuredAt": "2026-08-24T20:41:06.685Z",
-      "pageId": "category",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 31,
-        "fcp": 5850.388500000001,
-        "lcp": 15761.553,
-        "si": 7815.575522700463,
-        "tbt": 1600.5,
-        "cls": 0.00018990279271863513,
-        "ttfb": 688.3430000000001
-      }
-    },
-    {
-      "id": "2026-08-24T20:41:26.312Z|category|desktop",
-      "measuredAt": "2026-08-24T20:41:26.312Z",
-      "pageId": "category",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 62,
-        "fcp": 2103.8070000000002,
-        "lcp": 4534.4645,
-        "si": 3426.3372493031375,
-        "tbt": 54.5,
-        "cls": 0.00017069279435847436,
-        "ttfb": 760.2719999999999
-      }
-    },
-    {
-      "id": "2026-08-24T20:41:45.070Z|product|mobile",
-      "measuredAt": "2026-08-24T20:41:45.070Z",
-      "pageId": "product",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 34,
-        "fcp": 4510.57,
-        "lcp": 14261.811000000002,
-        "si": 7583.5712964588965,
-        "tbt": 1453.5,
-        "cls": 0.000341712013380026,
-        "ttfb": 383.453
-      }
-    },
-    {
-      "id": "2026-08-24T20:42:01.515Z|product|desktop",
-      "measuredAt": "2026-08-24T20:42:01.515Z",
-      "pageId": "product",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 65,
-        "fcp": 1916.1570000000002,
-        "lcp": 4029.5967499999997,
-        "si": 2922.839047654718,
-        "tbt": 57.499999999999545,
-        "cls": 0.01200506598403919,
-        "ttfb": 403.1110000000001
-      }
-    },
-    {
-      "id": "2026-08-24T20:42:17.941Z|basket|mobile",
-      "measuredAt": "2026-08-24T20:42:17.941Z",
-      "pageId": "basket",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 40,
-        "fcp": 3460.962,
-        "lcp": 6579.476500000001,
-        "si": 4239.6958367742145,
-        "tbt": 1364,
-        "cls": 0.11492209003362969,
-        "ttfb": 240.85100000000006
-      }
-    },
-    {
-      "id": "2026-08-24T20:42:31.923Z|basket|desktop",
-      "measuredAt": "2026-08-24T20:42:31.923Z",
-      "pageId": "basket",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 78,
-        "fcp": 1618.85,
-        "lcp": 2355.5775,
-        "si": 2069.226571805933,
-        "tbt": 54.5,
-        "cls": 0.004475042104612839,
-        "ttfb": 238.25299999999993
-      }
-    },
-    {
-      "id": "2026-08-24T21:37:13.918Z|homepage|mobile",
-      "measuredAt": "2026-08-24T21:37:13.918Z",
-      "pageId": "homepage",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 28,
-        "fcp": 7351.452,
-        "lcp": 8105.1449999999995,
-        "si": 7389.854874150735,
-        "tbt": 1047.0807500000028,
-        "cls": 0.17214818844417396,
-        "ttfb": 481.224
-      }
-    },
-    {
-      "id": "2026-08-24T21:37:35.839Z|homepage|desktop",
-      "measuredAt": "2026-08-24T21:37:35.839Z",
-      "pageId": "homepage",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 69,
-        "fcp": 2218.964,
-        "lcp": 2501.5639999999994,
-        "si": 2863.4619907901515,
-        "tbt": 28,
-        "cls": 0.09958335194016982,
-        "ttfb": 440.766
-      }
-    },
-    {
-      "id": "2026-08-24T21:37:55.105Z|category|mobile",
-      "measuredAt": "2026-08-24T21:37:55.105Z",
-      "pageId": "category",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 31,
-        "fcp": 7881.441999999998,
-        "lcp": 15554.543499999996,
-        "si": 7881.441999999998,
-        "tbt": 1525.5,
-        "cls": 0.00018990279271863513,
-        "ttfb": 603.8829999999999
-      }
-    },
-    {
-      "id": "2026-08-24T21:38:13.919Z|category|desktop",
-      "measuredAt": "2026-08-24T21:38:13.919Z",
-      "pageId": "category",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 65,
-        "fcp": 1955.0109999999997,
-        "lcp": 3820.5615,
-        "si": 3235.3807211711974,
-        "tbt": 35,
-        "cls": 0.00021398626746449792,
-        "ttfb": 609.149
-      }
-    },
-    {
-      "id": "2026-08-24T21:38:31.735Z|product|mobile",
-      "measuredAt": "2026-08-24T21:38:31.735Z",
-      "pageId": "product",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 36,
-        "fcp": 4337.182000000001,
-        "lcp": 12503.131000000001,
-        "si": 5983.172181219485,
-        "tbt": 1406,
-        "cls": 0.000341712013380026,
-        "ttfb": 373.872
-      }
-    },
-    {
-      "id": "2026-08-24T21:38:47.703Z|product|desktop",
-      "measuredAt": "2026-08-24T21:38:47.703Z",
-      "pageId": "product",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 67,
-        "fcp": 1792.2089999999998,
-        "lcp": 3719.730829689025,
-        "si": 2776.8358962921748,
-        "tbt": 54.999999999999545,
-        "cls": 0.011169039145575555,
-        "ttfb": 368.92300000000006
-      }
-    },
-    {
-      "id": "2026-08-24T21:39:03.890Z|basket|mobile",
-      "measuredAt": "2026-08-24T21:39:03.890Z",
-      "pageId": "basket",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 38,
-        "fcp": 3331.4970000000003,
-        "lcp": 7669.123500000001,
-        "si": 4392.65164744886,
-        "tbt": 1404,
-        "cls": 0.11501375309733179,
-        "ttfb": 266.52400000000006
-      }
-    },
-    {
-      "id": "2026-08-24T21:39:17.547Z|basket|desktop",
-      "measuredAt": "2026-08-24T21:39:17.547Z",
-      "pageId": "basket",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 79,
-        "fcp": 1510.2920000000004,
-        "lcp": 2481.3799999999997,
-        "si": 1941.785059969445,
-        "tbt": 54.000000000000455,
-        "cls": 0.0013574424212144573,
-        "ttfb": 208.327
-      }
-    },
-    {
-      "id": "2026-08-24T21:57:44.305Z|homepage|mobile",
-      "measuredAt": "2026-08-24T21:57:44.305Z",
-      "pageId": "homepage",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 31,
-        "fcp": 7709.029,
-        "lcp": 9622.5,
-        "si": 9396.770743347133,
-        "tbt": 718,
-        "cls": 0.17236797789122774,
-        "ttfb": 627.9809999999999
-      }
-    },
-    {
-      "id": "2026-08-24T21:58:07.833Z|homepage|desktop",
-      "measuredAt": "2026-08-24T21:58:07.833Z",
-      "pageId": "homepage",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 64,
-        "fcp": 2584.8800000000006,
-        "lcp": 2915.0384000000004,
-        "si": 3635.6528466206973,
-        "tbt": 1.5,
-        "cls": 0.09967768515956775,
-        "ttfb": 512.605
-      }
-    },
-    {
-      "id": "2026-08-24T21:58:26.370Z|category|mobile",
-      "measuredAt": "2026-08-24T21:58:26.370Z",
-      "pageId": "category",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 33,
-        "fcp": 8259.919999999998,
-        "lcp": 19153.566,
-        "si": 9609.784896617588,
-        "tbt": 1084.5,
-        "cls": 0.00018990279271863513,
-        "ttfb": 895.7470000000001
-      }
-    },
-    {
-      "id": "2026-08-24T21:58:46.580Z|category|desktop",
-      "measuredAt": "2026-08-24T21:58:46.580Z",
-      "pageId": "category",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 60,
-        "fcp": 2574.4950000000003,
-        "lcp": 4954.8485,
-        "si": 3842.4395327929765,
-        "tbt": 6.5,
-        "cls": 0.00017880257704405475,
-        "ttfb": 631.074
-      }
-    },
-    {
-      "id": "2026-08-24T21:59:04.186Z|product|mobile",
-      "measuredAt": "2026-08-24T21:59:04.186Z",
-      "pageId": "product",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 32,
-        "fcp": 7157.344,
-        "lcp": 18248.99475,
-        "si": 8898.234622379823,
-        "tbt": 1260.5,
-        "cls": 0.000341712013380026,
-        "ttfb": 389.932
-      }
-    },
-    {
-      "id": "2026-08-24T21:59:22.261Z|product|desktop",
-      "measuredAt": "2026-08-24T21:59:22.261Z",
-      "pageId": "product",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 60,
-        "fcp": 2495.4294,
-        "lcp": 5044.78294,
-        "si": 3733.8472312270574,
-        "tbt": 26.5,
-        "cls": 0.011169039145575555,
-        "ttfb": 420.46000000000004
-      }
-    },
-    {
-      "id": "2026-08-24T21:59:38.175Z|basket|mobile",
-      "measuredAt": "2026-08-24T21:59:38.175Z",
-      "pageId": "basket",
-      "profile": "mobile",
-      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 36,
-        "fcp": 4978.0199999999995,
-        "lcp": 11048.4245,
-        "si": 6147.258705872051,
-        "tbt": 937,
-        "cls": 0.1172450322435303,
-        "ttfb": 298.03999999999996
-      }
-    },
-    {
-      "id": "2026-08-24T21:59:52.497Z|basket|desktop",
-      "measuredAt": "2026-08-24T21:59:52.497Z",
-      "pageId": "basket",
-      "profile": "desktop",
-      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
-      "status": "ok",
-      "error": null,
-      "metrics": {
-        "performance": 70,
-        "fcp": 2089.9800000000005,
-        "lcp": 2929.223,
-        "si": 2573.1586207698874,
-        "tbt": 5,
-        "cls": 0.0013583901667262087,
-        "ttfb": 233.173
-      }
-    },
     {
       "id": "2026-08-24T22:37:14.008Z|homepage|mobile",
       "measuredAt": "2026-08-24T22:37:14.008Z",
@@ -12982,6 +12550,150 @@
         "tbt": 55,
         "cls": 0.0012897356221290446,
         "ttfb": 241.0759999999999
+      }
+    },
+    {
+      "id": "2026-09-01T22:32:22.646Z|homepage|mobile",
+      "measuredAt": "2026-09-01T22:32:22.646Z",
+      "pageId": "homepage",
+      "profile": "mobile",
+      "url": "https://eshop.koh-i-noor.cz/",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 29,
+        "fcp": 7351.1946,
+        "lcp": 8232.17155,
+        "si": 7814.54289634992,
+        "tbt": 953.2448500000046,
+        "cls": 0.1721467202315543,
+        "ttfb": 465.209
+      }
+    },
+    {
+      "id": "2026-09-01T22:32:43.216Z|homepage|desktop",
+      "measuredAt": "2026-09-01T22:32:43.216Z",
+      "pageId": "homepage",
+      "profile": "desktop",
+      "url": "https://eshop.koh-i-noor.cz/",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 73,
+        "fcp": 1783.5336,
+        "lcp": 2314.3368,
+        "si": 2563.5934430869556,
+        "tbt": 11.5,
+        "cls": 0.09964600107466372,
+        "ttfb": 486.875
+      }
+    },
+    {
+      "id": "2026-09-01T22:33:02.078Z|category|mobile",
+      "measuredAt": "2026-09-01T22:33:02.078Z",
+      "pageId": "category",
+      "profile": "mobile",
+      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 32,
+        "fcp": 5352.224999999999,
+        "lcp": 13315.918999999998,
+        "si": 7183.593590277201,
+        "tbt": 1587.6362499999996,
+        "cls": 0.00018990279271863513,
+        "ttfb": 913.995
+      }
+    },
+    {
+      "id": "2026-09-01T22:33:21.261Z|category|desktop",
+      "measuredAt": "2026-09-01T22:33:21.261Z",
+      "pageId": "category",
+      "profile": "desktop",
+      "url": "https://eshop.koh-i-noor.cz/cs/skolni-potreby",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 65,
+        "fcp": 1931.5459999999998,
+        "lcp": 3795.363499999999,
+        "si": 3139.266044869056,
+        "tbt": 14,
+        "cls": 0.000168569134088008,
+        "ttfb": 765.8620000000001
+      }
+    },
+    {
+      "id": "2026-09-01T22:33:40.077Z|product|mobile",
+      "measuredAt": "2026-09-01T22:33:40.077Z",
+      "pageId": "product",
+      "profile": "mobile",
+      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 34,
+        "fcp": 4341.094000000001,
+        "lcp": 14040.966,
+        "si": 6540.402733636858,
+        "tbt": 1571.5,
+        "cls": 0.000341712013380026,
+        "ttfb": 372.51099999999997
+      }
+    },
+    {
+      "id": "2026-09-01T22:33:56.056Z|product|desktop",
+      "measuredAt": "2026-09-01T22:33:56.056Z",
+      "pageId": "product",
+      "profile": "desktop",
+      "url": "https://eshop.koh-i-noor.cz/cs/produkt/barvy-brilantni-12?sid=2977",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 68,
+        "fcp": 1787.27,
+        "lcp": 3935.3225000000007,
+        "si": 2525.3311788208457,
+        "tbt": 62.499999999999545,
+        "cls": 0.013800600746198492,
+        "ttfb": 354.18399999999997
+      }
+    },
+    {
+      "id": "2026-09-01T22:34:12.015Z|basket|mobile",
+      "measuredAt": "2026-09-01T22:34:12.015Z",
+      "pageId": "basket",
+      "profile": "mobile",
+      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 38,
+        "fcp": 3326.816,
+        "lcp": 7764.2615000000005,
+        "si": 4560.504973584193,
+        "tbt": 1342,
+        "cls": 0.11492209003362969,
+        "ttfb": 245.00199999999995
+      }
+    },
+    {
+      "id": "2026-09-01T22:34:26.327Z|basket|desktop",
+      "measuredAt": "2026-09-01T22:34:26.327Z",
+      "pageId": "basket",
+      "profile": "desktop",
+      "url": "https://eshop.koh-i-noor.cz/cs/Basket",
+      "status": "ok",
+      "error": null,
+      "metrics": {
+        "performance": 78,
+        "fcp": 1504.8999999999999,
+        "lcp": 2487.5989999999997,
+        "si": 2003.02247687214,
+        "tbt": 59,
+        "cls": 0.0015563376582523104,
+        "ttfb": 211.54399999999998
       }
     }
   ]
