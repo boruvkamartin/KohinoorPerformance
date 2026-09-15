@@ -1,5 +1,38 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-29T11:02:55.332Z",
-  "open": {}
+  "updatedAt": "2026-09-15T00:32:30.544Z",
+  "open": {
+    "basket|mobile|lcp": {
+      "kind": "metric",
+      "pageId": "basket",
+      "profile": "mobile",
+      "metricId": "lcp",
+      "value": 13006.021500000003,
+      "limit": 11805.869625,
+      "unit": "ms",
+      "label": "LCP",
+      "reason": "jump",
+      "streak": 2,
+      "error": null,
+      "key": "basket|mobile|lcp",
+      "pageLabel": "Košík",
+      "openedAt": "2026-09-15T00:32:30.544Z"
+    },
+    "product|mobile|fcp": {
+      "kind": "metric",
+      "pageId": "product",
+      "profile": "mobile",
+      "metricId": "fcp",
+      "value": 7271.2954599999985,
+      "limit": 7106.4774,
+      "unit": "ms",
+      "label": "FCP",
+      "reason": "jump",
+      "streak": 2,
+      "error": null,
+      "key": "product|mobile|fcp",
+      "pageLabel": "Produkt",
+      "openedAt": "2026-09-15T00:32:30.544Z"
+    }
+  }
 }
